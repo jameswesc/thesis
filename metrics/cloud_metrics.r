@@ -12,9 +12,9 @@ library("dplyr")
 
 # Define input and output directories
 input_dir <-
-  "/Users/jgregory/Code/thesis/metrics/data/lidar-data/plots-cylce2-MGA2020"
-output_csv <- "std_metrics.csv"
-output_json <- "std_metrics.json"
+  "../data/lidar-data/plots-cylce2-MGA2020"
+output_csv <- "../data/lidar-data/plots-cylce2-MGA2020/std_metrics.csv"
+output_json <- "../data/lidar-data/plots-cylce2-MGA2020/std_metrics.json"
 
 # %%
 # Get all .laz files in the input directory
@@ -60,6 +60,10 @@ for (file_path in laz_files) {
 
       # Add plot_id column
       metrics_df$plot_id <- base_name
+
+      # Add site_type column
+      site_type <- substr(base_name, 1, 3)
+      metrics_df$site_type <- site_type
 
       # Append to the all_metrics dataframe
       if (is.null(all_metrics)) {
