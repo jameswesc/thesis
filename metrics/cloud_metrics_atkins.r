@@ -57,7 +57,9 @@ for (file_path in laz_files) {
       plot_id <- base_name
 
       # Read LAS file (filter out points below zero)
-      point_cloud <- readLAS(file_path, filter = "-drop_z_below 0")
+      point_cloud <- readLAS(file_path,
+        select = "r", filter = "-drop_z_below 0"
+      )
       first_returns <- filter_first(point_cloud)
 
       # Calculate standard metrics
@@ -114,6 +116,7 @@ for (file_path in laz_files) {
     }
   )
 }
+
 # %%
 head(metrics)
 
