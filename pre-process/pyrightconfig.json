@@ -1,4 +1,6 @@
 {
-    "venvPath": "/opt/homebrew/Caskroom/miniconda/base/envs",
-    "venv": "preprocess"
+  "venvPath": ".",
+  "venv": ".venv",
+  "extraPaths": [],
+  "typeCheckingMode": "basic"
 }
