@@ -57,11 +57,6 @@ write_out_metrics <- function(metrics, site) {
         str_c(site_dir, "/", site, "_std_z_metrics_nolownoise.json")
     )
 }
-# %%
-site <- "AGG_O_01"
-metrics <- process_site(site)
-metrics
-
 
 # %%
 sites <- list.dirs(base_dir, full.names = FALSE, recursive = FALSE)

@@ -214,6 +214,16 @@ def create_plot_crop_pipeline(
             "extra_dims": "HeightAboveGround=float32",
             "forward": "header,scale,offset",
         },
+        # Also write to .laz version 1.2 so I can easily
+        # load it into deck.gl
+        {
+            "type": "writers.las",
+            "filename": str(output_file).replace(".copc.laz", "_1.2.laz"),
+            "extra_dims": "HeightAboveGround=float32,Infrared=uint16",
+            "forward": "header,scale,offset",
+            "dataformat_id": 2,  # Includes RGB
+            "minor_version": 2,
+        },
     ]
 
     return json.dumps(pipeline)

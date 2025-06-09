@@ -1,12 +1,12 @@
 // %%
-import { Copc } from "npm:copc";
+import { Copc, Las } from "npm:copc";
 // %%
 const filename = "../sites/PPO_Y_07/PPO_Y_07_MGA2020.copc.laz";
 const copc = await Copc.create(filename);
 console.log(copc);
 
 // %%
-const { nodes, pages } = await Copc.loadHierarchyPage(
+const { nodes } = await Copc.loadHierarchyPage(
   filename,
   copc.info.rootHierarchyPage,
 );
