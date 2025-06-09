@@ -131,6 +131,7 @@ def create_pdal_pipeline(input_file: Path, output_file: Path) -> str:
             "type": "writers.copc",
             "filename": str(output_file),
             "extra_dims": "HeightAboveGround=float32",
+            "forward": "header,scale,offset",
         },
     ]
 
@@ -151,6 +152,97 @@ def process_lidar_file(input_file: Path, output_file: Path) -> int:
     pipeline_config = create_pdal_pipeline(input_file, output_file)
 
     # Create and execute pipeline
+    pipeline = pdal.Pipeline(pipeline_config)
+    point_count = pipeline.execute()
+
+    return point_count
+
+
+def geojson_polygon_to_wkt(coordinates: list) -> str:
+    """
+    Convert GeoJSON polygon coordinates to WKT format.
+
+    Args:
+        coordinates: GeoJSON polygon coordinates (array of linear rings)
+
+    Returns:
+        WKT polygon string
+    """
+    # GeoJSON polygon coordinates are an array of linear rings
+    # Each linear ring is an array of [x, y] coordinate pairs
+    # The first ring is the exterior ring, subsequent rings are holes
+
+    rings = []
+    for ring in coordinates:
+        # Convert coordinate pairs to "x y" format
+        coord_pairs = [f"{coord[0]} {coord[1]}" for coord in ring]
+        ring_wkt = "(" + ", ".join(coord_pairs) + ")"
+        rings.append(ring_wkt)
+
+    # Format as WKT POLYGON
+    if len(rings) == 1:
+        # Simple polygon with no holes
+        return f"POLYGON({rings[0]})"
+    else:
+        # Polygon with holes
+        return f"POLYGON({', '.join(rings)})"
+
+
+def create_plot_crop_pipeline(
+    input_file: Path, output_file: Path, polygon_wkt: str
+) -> str:
+    """
+    Create PDAL pipeline for cropping lidar data to a specific plot polygon.
+
+    Args:
+        input_file: Path to input COPC LAZ file
+        output_file: Path to output cropped COPC LAZ file
+        polygon_wkt: WKT polygon string for cropping
+
+    Returns:
+        PDAL pipeline configuration as a JSON string
+    """
+    pipeline = [
+        # Read input file
+        {"type": "readers.las", "filename": str(input_file)},
+        # Crop to polygon
+        {"type": "filters.crop", "polygon": polygon_wkt},
+        # Write as COPC LAZ
+        {
+            "type": "writers.copc",
+            "filename": str(output_file),
+            "extra_dims": "HeightAboveGround=float32",
+            "forward": "header,scale,offset",
+        },
+    ]
+
+    return json.dumps(pipeline)
+
+
+def crop_plot_from_lidar(
+    site_lidar_file: Path, output_file: Path, plot_geometry: Dict[str, Any]
+) -> int:
+    """
+    Crop a single plot from the site lidar file.
+
+    Args:
+        site_lidar_file: Path to processed site COPC LAZ file
+        output_file: Path to output plot COPC LAZ file
+        plot_geometry: GeoJSON geometry dict for the plot
+
+    Returns:
+        Number of points in the cropped plot
+    """
+    # Convert GeoJSON polygon to WKT
+    if plot_geometry["type"] != "Polygon":
+        raise ValueError(f"Unsupported geometry type: {plot_geometry['type']}")
+
+    polygon_wkt = geojson_polygon_to_wkt(plot_geometry["coordinates"])
+
+    # Create and execute crop pipeline
+    pipeline_config = create_plot_crop_pipeline(
+        site_lidar_file, output_file, polygon_wkt
+    )
     pipeline = pdal.Pipeline(pipeline_config)
     point_count = pipeline.execute()
 
@@ -186,12 +278,18 @@ def process_lidar_file(input_file: Path, output_file: Path) -> int:
     is_flag=True,
     help="Overwrite existing output directory and files without confirmation",
 )
+@click.option(
+    "--clip-plots",
+    is_flag=True,
+    help="Create individual LAZ files for each plot by cropping the site lidar data",
+)
 def main(
     lidar_directory: Path,
     plots: Path,
     output_dir: Path,
     max_sites: int,
     overwrite: bool,
+    clip_plots: bool,
 ):
     """
     Process lidar files and create site-specific directories with plots.
@@ -276,6 +374,54 @@ def main(
         click.echo(
             f"  Created {site_name}_plots_MGA2020.geojson with {plot_count} plots"
         )
+
+        # Clip individual plots if requested
+        if clip_plots:
+            click.echo(f"  Clipping {plot_count} individual plots...")
+            clipped_plots = 0
+            total_plot_points = 0
+
+            for plot_feature in site_plots["features"]:
+                plot_properties = plot_feature.get("properties", {})
+                plot_number = plot_properties.get("plot_number")
+                plot_geometry = plot_feature.get("geometry")
+
+                if not plot_number or not plot_geometry:
+                    click.echo(
+                        "    ✗ Skipping plot with missing number or geometry", err=True
+                    )
+                    continue
+
+                # Create output filename for plot
+                plot_output_file = (
+                    site_dir / f"{site_name}_plot{plot_number}_MGA2020.copc.laz"
+                )
+
+                try:
+                    plot_points = crop_plot_from_lidar(
+                        new_lidar_path, plot_output_file, plot_geometry
+                    )
+                    if plot_points > 0:
+                        click.echo(f"    ✓ Plot {plot_number}: {plot_points:,} points")
+                        clipped_plots += 1
+                        total_plot_points += plot_points
+                    else:
+                        click.echo(
+                            f"    ⚠ Plot {plot_number}: 0 points (no data in plot area)"
+                        )
+                        # Remove empty file if created
+                        if plot_output_file.exists():
+                            plot_output_file.unlink()
+
+                except Exception as e:
+                    click.echo(f"    ✗ Plot {plot_number}: Error - {e}", err=True)
+                    # Remove partial file if created
+                    if plot_output_file.exists():
+                        plot_output_file.unlink()
+
+            click.echo(
+                f"  ✓ Successfully clipped {clipped_plots}/{plot_count} plots ({total_plot_points:,} total points)"
+            )
 
     click.echo(f"\n{'=' * 50}")
     click.echo("Processing complete!")
