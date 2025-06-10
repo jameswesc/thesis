@@ -1,12 +1,20 @@
-# %%
 library(lidR)
 library(sf)
 library(tidyverse)
 library(jsonlite)
 
-# %%
-base_dir <- "../sites"
-# %%
+# Parse command line arguments
+args <- commandArgs(trailingOnly = TRUE)
+base_dir <- "../sites" # default value
+
+if (length(args) > 0) {
+    for (i in seq_along(args)) {
+        if (args[i] == "--base_dir" && i < length(args)) {
+            base_dir <- args[i + 1]
+        }
+    }
+}
+
 process_site <- function(site) {
     site_dir <- str_c(base_dir, "/", site)
     lidar_file <- str_c(site_dir, "/", site, "_MGA2020.copc.laz")
@@ -45,23 +53,51 @@ process_site <- function(site) {
     )
 }
 
-# %%
-write_out_metrics <- function(metrics, site) {
-    site_dir <- str_c(base_dir, "/", site)
+
+sites <- list.dirs(base_dir, full.names = FALSE, recursive = FALSE)
+
+# Initialize combined dataframes
+all_std_z_metrics <- data.frame()
+all_std_z_metrics_nolownoise <- data.frame()
+
+for (i in seq_along(sites)) {
+    site <- sites[i]
+    print(str_c("Processing ", site, " ... ", i, "/", length(sites)))
+    metrics <- process_site(site)
+
+    # Add site column if it isn't there
+    if (!"site" %in% names(metrics$std_z_metrics)) {
+        metrics$std_z_metrics$site <- site
+    }
+    if (!"site" %in% names(metrics$std_z_metrics_nolownoise)) {
+        metrics$std_z_metrics_nolownoise$site <- site
+    }
+
+    # Write out metrics as json for individual sites
     write_json(
         st_drop_geometry(metrics$std_z_metrics),
-        str_c(site_dir, "/", site, "_std_z_metrics.json")
+        str_c(base_dir, "/", site, "/", site, "_std_z_metrics.json")
     )
     write_json(
         st_drop_geometry(metrics$std_z_metrics_nolownoise),
-        str_c(site_dir, "/", site, "_std_z_metrics_nolownoise.json")
+        str_c(base_dir, "/", site, "/", site, "_std_z_metrics_nolownoise.json")
+    )
+
+    # Add to total metrics
+    all_std_z_metrics <- bind_rows(
+        all_std_z_metrics, st_drop_geometry(metrics$std_z_metrics)
+    )
+    all_std_z_metrics_nolownoise <- bind_rows(
+        all_std_z_metrics_nolownoise, st_drop_geometry(metrics$std_z_metrics_nolownoise)
     )
 }
 
-# %%
-sites <- list.dirs(base_dir, full.names = FALSE, recursive = FALSE)
-for (site in sites) {
-    print(str_c("Processing ", site))
-    metrics <- process_site(site)
-    write_out_metrics(metrics, site)
-}
+# Write combined dataframes to JSON files
+write_json(
+    all_std_z_metrics,
+    str_c(base_dir, "/allsites_std_z_metrics.json")
+)
+write_json(
+    all_std_z_metrics_nolownoise,
+    str_c(base_dir, "/allsites_std_z_metrics_nolownoise.json")
+)
