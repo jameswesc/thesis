@@ -106,6 +106,8 @@ def create_basic_pdal_pipeline(input_file: Path, output_file: Path) -> str:
     pipeline = [
         # Read input file
         {"type": "readers.las", "filename": str(input_file)},
+        # Only take unclassified (0, 1), ground (2) and vegetation (3, 4, 5) points
+        {"type": "filters.range", "limits": "Classification[0:5]"},
         # Reproject to EPSG:7855 (MGA 2020 Zone 55) - auto-detect input CRS
         {
             "type": "filters.reprojection",
