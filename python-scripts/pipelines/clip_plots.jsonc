@@ -1,0 +1,26 @@
+[
+    // Perform on plots with low noise also classified
+    {
+        "type": "readers.las",
+        "filename": "<BASE_DIR>/<SITE>/<SITE>_MGA2020_HN_LN.copc.laz"
+    },
+    // Crop to polygon
+    { "type": "filters.crop", "polygon": "<PLOT_WKT>" },
+    // Write as COPC LAZ
+    {
+        "type": "writers.copc",
+        "filename": "<BASE_DIR>/<SITE>/<SITE>_plot<PLOT_NUMBER>_MGA2020_HN_LN.copc.laz",
+        "forward": "header,scale,offset"
+    },
+    // Also write to .laz version 1.2 so I can easily
+    // load it into deck.gl
+    {
+        "type": "writers.las",
+        "filename": "<BASE_DIR>/<SITE>/<SITE>_plot<PLOT_NUMBER>_MGA2020_HN_LN_LAS1.2.laz",
+        // Include Infrared as an extra dimension as its not included v1.2
+        "extra_dims": "Infrared=uint16",
+        "forward": "header,scale,offset",
+        "dataformat_id": 2, // Includes core point data and RGB
+        "minor_version": 2 // Version 1.2
+    }
+]

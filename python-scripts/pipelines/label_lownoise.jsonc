@@ -1,0 +1,19 @@
+[
+    // Requires being run after label_lownoise
+    {
+        "type": "readers.las",
+        "filename": "<BASE_DIR>/<SITE>/<SITE>_MGA2020_HN.copc.laz"
+    },
+    {
+        "type": "filters.outlier",
+        "method": "statistical",
+        "mean_k": 8,
+        "multiplier": 5,
+        "where": "Classification != 18"
+    },
+    {
+        "type": "writers.copc",
+        "filename": "<BASE_DIR>/<SITE>/<SITE>_MGA2020_HN_LN.copc.laz",
+        "forward": "header,scale,offset"
+    }
+]
