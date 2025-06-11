@@ -1,0 +1,26 @@
+[
+    {
+        "type": "readers.las",
+        "filename": "{{ data_dir }}/normalised-lidar-sites-MGA2020/{{ site }}.copc.laz"
+    },
+    // Crop to polygon
+    { "type": "filters.crop", "polygon": "{{ polygon_wkt }}" },
+    // Write as COPC LAZ
+    {
+        "type": "writers.copc",
+        "filename": "{{ data_dir }}/lidar-plots-MGA2020/{{ site_plot_id }}.copc.laz",
+        "forward": "header,scale,offset",
+        "extra_dims": "all"
+    },
+    // Also write to .laz version 1.2 so I can easily
+    // load it into deck.gl
+    {
+        "type": "writers.las",
+        "filename": "{{ data_dir }}/lidar-plots-MGA2020/{{ site_plot_id }}_las1.2.laz",
+        // Include Infrared as an extra dimension as its not included v1.2
+        "extra_dims": "Infrared=uint16",
+        "forward": "header,scale,offset",
+        "dataformat_id": 2, // Includes core point data and RGB
+        "minor_version": 2 // Version 1.2
+    }
+]
