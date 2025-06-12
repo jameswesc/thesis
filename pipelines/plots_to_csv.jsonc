@@ -1,0 +1,13 @@
+[
+    {
+        "type": "readers.copc",
+        "filename": "{{ data_dir }}/lidar-plots-copc/{{ site_plot_id }}.copc.laz"
+    },
+    {
+        "type": "writers.text",
+        "format": "csv",
+        "filename": "{{ data_dir }}/lidar-plots-csv/{{ site_plot_id }}.csv",
+        "order": "X,Y,Z,Intensity,Red,Green,Blue,Infrared,ReturnNumber,NumberOfReturns,OriginalZ",
+        "keep_unspecified": false
+    }
+]

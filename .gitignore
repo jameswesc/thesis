@@ -4,3 +4,4 @@
 *.parquet
 .Rproj.user
 openrc.sh
+data/lidar-plots-csv/*.csv
