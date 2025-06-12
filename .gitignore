@@ -1,4 +1,6 @@
 .DS_Store
 .ropeproject
 *.laz
+*.parquet
 .Rproj.user
+openrc.sh

@@ -1,0 +1,13 @@
+// Use conda env "pdal-env" as brew installation of pdal
+// doesn't have arrow installed
+[
+    {
+        "type": "readers.copc",
+        "filename": "{{ data_dir }}/lidar-plots-copc/{{ site_plot_id }}.copc.laz"
+    },
+    {
+        "type": "writers.arrow",
+        "filename": "{{ data_dir }}/lidar-plots-parquet/{{ site_plot_id }}.parquet",
+        "format": "parquet"
+    }
+]
