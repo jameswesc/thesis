@@ -5,23 +5,29 @@
 //      3.  Saves as a COPC lidar file with HeightAboveGround as an
 //          additional dimension
 [
-    {
-        "type": "readers.las",
-        "filename": "{{ data_dir }}/raw-lidar-sites-MGA94/{{ site }}.laz"
-    },
-    {
-        "type": "filters.hag_nn",
-        "allow_extrapolation": false,
-        "count": 1
-    },
-    {
-        "type": "filters.ferry",
-        "dimensions": "Z=>OriginalZ,HeightAboveGround=>Z"
-    },
-    {
-        "type": "writers.copc",
-        "filename": "{{ data_dir }}/normalised-lidar-sites-MGA2020/{{ site }}.copc.laz",
-        "forward": "header,scale,offset",
-        "extra_dims": "all"
-    }
+  {
+    "type": "readers.las",
+    "filename": "{{ data_dir }}/raw-lidar-sites-MGA94/{{ site }}.laz"
+  },
+  {
+    "type": "filters.hag_nn",
+    "allow_extrapolation": false,
+    "count": 1
+  },
+  {
+    "type": "filters.ferry",
+    "dimensions": "Z=>OriginalZ,HeightAboveGround=>Z"
+  },
+  {
+    "type": "filters.outlier",
+    "method": "statistical",
+    "mean_k": 6,
+    "multiplier": 10
+  },
+  {
+    "type": "writers.copc",
+    "filename": "{{ data_dir }}/normalised-lidar-sites/{{ site }}.copc.laz",
+    "forward": "header,scale,offset",
+    "extra_dims": "all"
+  }
 ]
