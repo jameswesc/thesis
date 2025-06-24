@@ -5,29 +5,40 @@
 //      3.  Saves as a COPC lidar file with HeightAboveGround as an
 //          additional dimension
 [
+  // Read in laz file
   {
     "type": "readers.las",
     "filename": "{{ data_dir }}/raw-lidar-sites-MGA94/{{ site }}.laz"
   },
+  // Reproject to MGA 2020
+  {
+    "type": "filters.reprojection",
+    "out_srs": "EPSG:7855"
+  },
+  // Calculate height above ground
   {
     "type": "filters.hag_nn",
     "allow_extrapolation": false,
     "count": 1
   },
-  {
-    "type": "filters.ferry",
-    "dimensions": "Z=>OriginalZ,HeightAboveGround=>Z"
-  },
+  // Replace Z coordinate with height above ground
+  // Put original Z coordinate in its own field
+  // {
+  //   "type": "filters.ferry",
+  //   "dimensions": "Z=>OriginalZ,HeightAboveGround=>Z"
+  // },
+  // Remove statistical outliers
   {
     "type": "filters.outlier",
     "method": "statistical",
     "mean_k": 6,
     "multiplier": 10
   },
+  // Write to COPC
   {
     "type": "writers.copc",
     "filename": "{{ data_dir }}/normalised-lidar-sites/{{ site }}.copc.laz",
-    "forward": "header,scale,offset",
+    // "forward": "scale,offset",
     "extra_dims": "all"
   }
 ]
