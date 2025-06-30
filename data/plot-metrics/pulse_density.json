@@ -1,0 +1,1102 @@
+[
+    {
+        "fid": 1,
+        "site": "AGG_O_01",
+        "plot_number": 1,
+        "site_type": "AGG",
+        "site_plot_id": "AGG_O_01_P1",
+        "pulse_density": 48.7296,
+        "point_density": 94.7871,
+        "area_m2": 2666.1229
+    },
+    {
+        "fid": 2,
+        "site": "AGG_O_01",
+        "plot_number": 2,
+        "site_type": "AGG",
+        "site_plot_id": "AGG_O_01_P2",
+        "pulse_density": 48.2789,
+        "point_density": 94.2618,
+        "area_m2": 2379.0329
+    },
+    {
+        "fid": 3,
+        "site": "AGG_O_01",
+        "plot_number": 3,
+        "site_type": "AGG",
+        "site_plot_id": "AGG_O_01_P3",
+        "pulse_density": 48.3266,
+        "point_density": 96.5566,
+        "area_m2": 2848.9508
+    },
+    {
+        "fid": 4,
+        "site": "AGG_O_01",
+        "plot_number": 4,
+        "site_type": "AGG",
+        "site_plot_id": "AGG_O_01_P4",
+        "pulse_density": 49.8267,
+        "point_density": 109.5423,
+        "area_m2": 2616.5877
+    },
+    {
+        "fid": 5,
+        "site": "AGG_O_01",
+        "plot_number": 5,
+        "site_type": "AGG",
+        "site_plot_id": "AGG_O_01_P5",
+        "pulse_density": 49.1165,
+        "point_density": 121.2954,
+        "area_m2": 2326.3048
+    },
+    {
+        "fid": 11,
+        "site": "AGG_O_07",
+        "plot_number": 1,
+        "site_type": "AGG",
+        "site_plot_id": "AGG_O_07_P1",
+        "pulse_density": 28.364,
+        "point_density": 63.1766,
+        "area_m2": 2483.4991
+    },
+    {
+        "fid": 12,
+        "site": "AGG_O_07",
+        "plot_number": 2,
+        "site_type": "AGG",
+        "site_plot_id": "AGG_O_07_P2",
+        "pulse_density": 28.1821,
+        "point_density": 51.2913,
+        "area_m2": 2445.5242
+    },
+    {
+        "fid": 13,
+        "site": "AGG_O_07",
+        "plot_number": 3,
+        "site_type": "AGG",
+        "site_plot_id": "AGG_O_07_P3",
+        "pulse_density": 29.1729,
+        "point_density": 49.2862,
+        "area_m2": 2514.4544
+    },
+    {
+        "fid": 14,
+        "site": "AGG_O_07",
+        "plot_number": 4,
+        "site_type": "AGG",
+        "site_plot_id": "AGG_O_07_P4",
+        "pulse_density": 32.2129,
+        "point_density": 58.1161,
+        "area_m2": 2414.716
+    },
+    {
+        "fid": 15,
+        "site": "AGG_O_07",
+        "plot_number": 5,
+        "site_type": "AGG",
+        "site_plot_id": "AGG_O_07_P5",
+        "pulse_density": 30.4136,
+        "point_density": 54.6021,
+        "area_m2": 2389.1584
+    },
+    {
+        "fid": 34,
+        "site": "EPO_O_13",
+        "plot_number": 1,
+        "site_type": "EPO",
+        "site_plot_id": "EPO_O_13_P1",
+        "pulse_density": 31.6475,
+        "point_density": 67.4364,
+        "area_m2": 2298.9812
+    },
+    {
+        "fid": 35,
+        "site": "EPO_O_13",
+        "plot_number": 2,
+        "site_type": "EPO",
+        "site_plot_id": "EPO_O_13_P2",
+        "pulse_density": 30.8175,
+        "point_density": 67.9701,
+        "area_m2": 2528.9515
+    },
+    {
+        "fid": 36,
+        "site": "EPO_O_13",
+        "plot_number": 3,
+        "site_type": "EPO",
+        "site_plot_id": "EPO_O_13_P3",
+        "pulse_density": 31.2703,
+        "point_density": 68.4559,
+        "area_m2": 2556.9302
+    },
+    {
+        "fid": 37,
+        "site": "EPO_O_13",
+        "plot_number": 4,
+        "site_type": "EPO",
+        "site_plot_id": "EPO_O_13_P4",
+        "pulse_density": 30.6143,
+        "point_density": 64.0488,
+        "area_m2": 2541.9206
+    },
+    {
+        "fid": 38,
+        "site": "EPO_O_13",
+        "plot_number": 5,
+        "site_type": "EPO",
+        "site_plot_id": "EPO_O_13_P5",
+        "pulse_density": 30.2139,
+        "point_density": 63.1695,
+        "area_m2": 2130.7418
+    },
+    {
+        "fid": 46,
+        "site": "EPO_Y_15",
+        "plot_number": 1,
+        "site_type": "EPO",
+        "site_plot_id": "EPO_Y_15_P1",
+        "pulse_density": 34.492,
+        "point_density": 82.322,
+        "area_m2": 2654.6746
+    },
+    {
+        "fid": 47,
+        "site": "EPO_Y_15",
+        "plot_number": 2,
+        "site_type": "EPO",
+        "site_plot_id": "EPO_Y_15_P2",
+        "pulse_density": 34.9172,
+        "point_density": 80.3241,
+        "area_m2": 2601.6114
+    },
+    {
+        "fid": 48,
+        "site": "EPO_Y_15",
+        "plot_number": 3,
+        "site_type": "EPO",
+        "site_plot_id": "EPO_Y_15_P3",
+        "pulse_density": 24.3995,
+        "point_density": 61.0004,
+        "area_m2": 2594.9344
+    },
+    {
+        "fid": 49,
+        "site": "EPO_Y_15",
+        "plot_number": 4,
+        "site_type": "EPO",
+        "site_plot_id": "EPO_Y_15_P4",
+        "pulse_density": 19.4718,
+        "point_density": 49.0403,
+        "area_m2": 2632.5299
+    },
+    {
+        "fid": 50,
+        "site": "EPO_Y_15",
+        "plot_number": 5,
+        "site_type": "EPO",
+        "site_plot_id": "EPO_Y_15_P5",
+        "pulse_density": 19.711,
+        "point_density": 49.411,
+        "area_m2": 2418.7534
+    },
+    {
+        "fid": 66,
+        "site": "EPY_O_07",
+        "plot_number": 1,
+        "site_type": "EPY",
+        "site_plot_id": "EPY_O_07_P1",
+        "pulse_density": 31.6193,
+        "point_density": 115.7672,
+        "area_m2": 2314.0319
+    },
+    {
+        "fid": 67,
+        "site": "EPY_O_07",
+        "plot_number": 2,
+        "site_type": "EPY",
+        "site_plot_id": "EPY_O_07_P2",
+        "pulse_density": 29.9122,
+        "point_density": 101.5473,
+        "area_m2": 2335.0699
+    },
+    {
+        "fid": 68,
+        "site": "EPY_O_07",
+        "plot_number": 3,
+        "site_type": "EPY",
+        "site_plot_id": "EPY_O_07_P3",
+        "pulse_density": 30.0729,
+        "point_density": 103.0816,
+        "area_m2": 2395.6466
+    },
+    {
+        "fid": 69,
+        "site": "EPY_O_07",
+        "plot_number": 4,
+        "site_type": "EPY",
+        "site_plot_id": "EPY_O_07_P4",
+        "pulse_density": 31.4574,
+        "point_density": 118.2071,
+        "area_m2": 2436.504
+    },
+    {
+        "fid": 70,
+        "site": "EPY_O_07",
+        "plot_number": 5,
+        "site_type": "EPY",
+        "site_plot_id": "EPY_O_07_P5",
+        "pulse_density": 31.1691,
+        "point_density": 116.0026,
+        "area_m2": 2784.523
+    },
+    {
+        "fid": 81,
+        "site": "EPY_Y_04",
+        "plot_number": 1,
+        "site_type": "EPY",
+        "site_plot_id": "EPY_Y_04_P1",
+        "pulse_density": 32.0828,
+        "point_density": 45.4883,
+        "area_m2": 2335.6131
+    },
+    {
+        "fid": 82,
+        "site": "EPY_Y_04",
+        "plot_number": 2,
+        "site_type": "EPY",
+        "site_plot_id": "EPY_Y_04_P2",
+        "pulse_density": 32.7573,
+        "point_density": 52.1938,
+        "area_m2": 2455.3276
+    },
+    {
+        "fid": 83,
+        "site": "EPY_Y_04",
+        "plot_number": 3,
+        "site_type": "EPY",
+        "site_plot_id": "EPY_Y_04_P3",
+        "pulse_density": 32.2308,
+        "point_density": 45.7701,
+        "area_m2": 2444.3692
+    },
+    {
+        "fid": 84,
+        "site": "EPY_Y_04",
+        "plot_number": 4,
+        "site_type": "EPY",
+        "site_plot_id": "EPY_Y_04_P4",
+        "pulse_density": 25.3247,
+        "point_density": 30.1344,
+        "area_m2": 2304.7108
+    },
+    {
+        "fid": 85,
+        "site": "EPY_Y_04",
+        "plot_number": 5,
+        "site_type": "EPY",
+        "site_plot_id": "EPY_Y_04_P5",
+        "pulse_density": 24.616,
+        "point_density": 29.9093,
+        "area_m2": 2557.197
+    },
+    {
+        "fid": 101,
+        "site": "NRM_O_19",
+        "plot_number": 1,
+        "site_type": "NRM",
+        "site_plot_id": "NRM_O_19_P1",
+        "pulse_density": 23.2491,
+        "point_density": 77.6972,
+        "area_m2": 2611.2404
+    },
+    {
+        "fid": 102,
+        "site": "NRM_O_19",
+        "plot_number": 2,
+        "site_type": "NRM",
+        "site_plot_id": "NRM_O_19_P2",
+        "pulse_density": 22.9554,
+        "point_density": 72.3658,
+        "area_m2": 2646.345
+    },
+    {
+        "fid": 103,
+        "site": "NRM_O_19",
+        "plot_number": 3,
+        "site_type": "NRM",
+        "site_plot_id": "NRM_O_19_P3",
+        "pulse_density": 22.7241,
+        "point_density": 68.9704,
+        "area_m2": 2628.5751
+    },
+    {
+        "fid": 104,
+        "site": "NRM_O_19",
+        "plot_number": 4,
+        "site_type": "NRM",
+        "site_plot_id": "NRM_O_19_P4",
+        "pulse_density": 23.3921,
+        "point_density": 77.7097,
+        "area_m2": 2386.2776
+    },
+    {
+        "fid": 105,
+        "site": "NRM_O_19",
+        "plot_number": 5,
+        "site_type": "NRM",
+        "site_plot_id": "NRM_O_19_P5",
+        "pulse_density": 22.9555,
+        "point_density": 68.4038,
+        "area_m2": 2379.3425
+    },
+    {
+        "fid": 111,
+        "site": "NRM_Y_41",
+        "plot_number": 1,
+        "site_type": "NRM",
+        "site_plot_id": "NRM_Y_41_P1",
+        "pulse_density": 29.9643,
+        "point_density": 62.5624,
+        "area_m2": 2328.5702
+    },
+    {
+        "fid": 112,
+        "site": "NRM_Y_41",
+        "plot_number": 2,
+        "site_type": "NRM",
+        "site_plot_id": "NRM_Y_41_P2",
+        "pulse_density": 30.1615,
+        "point_density": 63.5532,
+        "area_m2": 2573.4805
+    },
+    {
+        "fid": 113,
+        "site": "NRM_Y_41",
+        "plot_number": 3,
+        "site_type": "NRM",
+        "site_plot_id": "NRM_Y_41_P3",
+        "pulse_density": 30.3059,
+        "point_density": 61.7407,
+        "area_m2": 2246.524
+    },
+    {
+        "fid": 114,
+        "site": "NRM_Y_41",
+        "plot_number": 4,
+        "site_type": "NRM",
+        "site_plot_id": "NRM_Y_41_P4",
+        "pulse_density": 29.807,
+        "point_density": 57.7671,
+        "area_m2": 2762.0043
+    },
+    {
+        "fid": 115,
+        "site": "NRM_Y_41",
+        "plot_number": 5,
+        "site_type": "NRM",
+        "site_plot_id": "NRM_Y_41_P5",
+        "pulse_density": 28.9484,
+        "point_density": 55.2432,
+        "area_m2": 2555.3754
+    },
+    {
+        "fid": 121,
+        "site": "NRO_138",
+        "plot_number": 1,
+        "site_type": "NRO",
+        "site_plot_id": "NRO_138_P1",
+        "pulse_density": 29.7268,
+        "point_density": 72.0933,
+        "area_m2": 2315.3483
+    },
+    {
+        "fid": 122,
+        "site": "NRO_138",
+        "plot_number": 2,
+        "site_type": "NRO",
+        "site_plot_id": "NRO_138_P2",
+        "pulse_density": 30.194,
+        "point_density": 74.342,
+        "area_m2": 2812.0841
+    },
+    {
+        "fid": 123,
+        "site": "NRO_138",
+        "plot_number": 3,
+        "site_type": "NRO",
+        "site_plot_id": "NRO_138_P3",
+        "pulse_density": 30.8259,
+        "point_density": 77.0017,
+        "area_m2": 2515.9064
+    },
+    {
+        "fid": 124,
+        "site": "NRO_138",
+        "plot_number": 4,
+        "site_type": "NRO",
+        "site_plot_id": "NRO_138_P4",
+        "pulse_density": 33.5543,
+        "point_density": 80.1845,
+        "area_m2": 2430.6571
+    },
+    {
+        "fid": 125,
+        "site": "NRO_138",
+        "plot_number": 5,
+        "site_type": "NRO",
+        "site_plot_id": "NRO_138_P5",
+        "pulse_density": 35.5198,
+        "point_density": 85.9721,
+        "area_m2": 2243.4256
+    },
+    {
+        "fid": 141,
+        "site": "NRO_O_56",
+        "plot_number": 1,
+        "site_type": "NRO",
+        "site_plot_id": "NRO_O_56_P1",
+        "pulse_density": 31.1562,
+        "point_density": 66.5154,
+        "area_m2": 2541.0657
+    },
+    {
+        "fid": 142,
+        "site": "NRO_O_56",
+        "plot_number": 2,
+        "site_type": "NRO",
+        "site_plot_id": "NRO_O_56_P2",
+        "pulse_density": 30.1483,
+        "point_density": 64.8709,
+        "area_m2": 2331.5065
+    },
+    {
+        "fid": 143,
+        "site": "NRO_O_56",
+        "plot_number": 3,
+        "site_type": "NRO",
+        "site_plot_id": "NRO_O_56_P3",
+        "pulse_density": 29.7608,
+        "point_density": 63.3098,
+        "area_m2": 2500.9394
+    },
+    {
+        "fid": 144,
+        "site": "NRO_O_56",
+        "plot_number": 4,
+        "site_type": "NRO",
+        "site_plot_id": "NRO_O_56_P4",
+        "pulse_density": 31.6171,
+        "point_density": 65.7064,
+        "area_m2": 2651.1254
+    },
+    {
+        "fid": 145,
+        "site": "NRO_O_56",
+        "plot_number": 5,
+        "site_type": "NRO",
+        "site_plot_id": "NRO_O_56_P5",
+        "pulse_density": 31.5677,
+        "point_density": 66.1417,
+        "area_m2": 2281.8903
+    },
+    {
+        "fid": 171,
+        "site": "NRY_Y_12",
+        "plot_number": 1,
+        "site_type": "NRY",
+        "site_plot_id": "NRY_Y_12_P1",
+        "pulse_density": 29.9778,
+        "point_density": 48.7359,
+        "area_m2": 2417.8872
+    },
+    {
+        "fid": 172,
+        "site": "NRY_Y_12",
+        "plot_number": 2,
+        "site_type": "NRY",
+        "site_plot_id": "NRY_Y_12_P2",
+        "pulse_density": 30.3019,
+        "point_density": 48.7541,
+        "area_m2": 2367.4097
+    },
+    {
+        "fid": 173,
+        "site": "NRY_Y_12",
+        "plot_number": 3,
+        "site_type": "NRY",
+        "site_plot_id": "NRY_Y_12_P3",
+        "pulse_density": 30.542,
+        "point_density": 49.2555,
+        "area_m2": 2460.2515
+    },
+    {
+        "fid": 174,
+        "site": "NRY_Y_12",
+        "plot_number": 4,
+        "site_type": "NRY",
+        "site_plot_id": "NRY_Y_12_P4",
+        "pulse_density": 30.4488,
+        "point_density": 52.2798,
+        "area_m2": 2575.6993
+    },
+    {
+        "fid": 175,
+        "site": "NRY_Y_12",
+        "plot_number": 5,
+        "site_type": "NRY",
+        "site_plot_id": "NRY_Y_12_P5",
+        "pulse_density": 30.1674,
+        "point_density": 51.9753,
+        "area_m2": 2484.6046
+    },
+    {
+        "fid": 176,
+        "site": "NRY_Y_15",
+        "plot_number": 1,
+        "site_type": "NRY",
+        "site_plot_id": "NRY_Y_15_P1",
+        "pulse_density": 30.3258,
+        "point_density": 35.5739,
+        "area_m2": 2781.759
+    },
+    {
+        "fid": 177,
+        "site": "NRY_Y_15",
+        "plot_number": 2,
+        "site_type": "NRY",
+        "site_plot_id": "NRY_Y_15_P2",
+        "pulse_density": 31.017,
+        "point_density": 39.8331,
+        "area_m2": 2527.6463
+    },
+    {
+        "fid": 178,
+        "site": "NRY_Y_15",
+        "plot_number": 3,
+        "site_type": "NRY",
+        "site_plot_id": "NRY_Y_15_P3",
+        "pulse_density": 31.0254,
+        "point_density": 38.6586,
+        "area_m2": 2479.5521
+    },
+    {
+        "fid": 179,
+        "site": "NRY_Y_15",
+        "plot_number": 4,
+        "site_type": "NRY",
+        "site_plot_id": "NRY_Y_15_P4",
+        "pulse_density": 31.6002,
+        "point_density": 41.3712,
+        "area_m2": 2439.5453
+    },
+    {
+        "fid": 180,
+        "site": "NRY_Y_15",
+        "plot_number": 5,
+        "site_type": "NRY",
+        "site_plot_id": "NRY_Y_15_P5",
+        "pulse_density": 32.6523,
+        "point_density": 39.5194,
+        "area_m2": 2650.9279
+    },
+    {
+        "fid": 191,
+        "site": "PPO_Y_07",
+        "plot_number": 1,
+        "site_type": "PPO",
+        "site_plot_id": "PPO_Y_07_P1",
+        "pulse_density": 27.9849,
+        "point_density": 50.3266,
+        "area_m2": 2526.5784
+    },
+    {
+        "fid": 192,
+        "site": "PPO_Y_07",
+        "plot_number": 2,
+        "site_type": "PPO",
+        "site_plot_id": "PPO_Y_07_P2",
+        "pulse_density": 27.886,
+        "point_density": 49.99,
+        "area_m2": 2072.4736
+    },
+    {
+        "fid": 193,
+        "site": "PPO_Y_07",
+        "plot_number": 3,
+        "site_type": "PPO",
+        "site_plot_id": "PPO_Y_07_P3",
+        "pulse_density": 27.7935,
+        "point_density": 49.601,
+        "area_m2": 2779.7834
+    },
+    {
+        "fid": 194,
+        "site": "PPO_Y_07",
+        "plot_number": 4,
+        "site_type": "PPO",
+        "site_plot_id": "PPO_Y_07_P4",
+        "pulse_density": 28.0827,
+        "point_density": 50.1249,
+        "area_m2": 2779.6164
+    },
+    {
+        "fid": 195,
+        "site": "PPO_Y_07",
+        "plot_number": 5,
+        "site_type": "PPO",
+        "site_plot_id": "PPO_Y_07_P5",
+        "pulse_density": 27.9768,
+        "point_density": 50.0811,
+        "area_m2": 1813.5397
+    },
+    {
+        "fid": 206,
+        "site": "PPO_Y_17",
+        "plot_number": 1,
+        "site_type": "PPO",
+        "site_plot_id": "PPO_Y_17_P1",
+        "pulse_density": 22.9348,
+        "point_density": 55.9452,
+        "area_m2": 2483.5193
+    },
+    {
+        "fid": 207,
+        "site": "PPO_Y_17",
+        "plot_number": 2,
+        "site_type": "PPO",
+        "site_plot_id": "PPO_Y_17_P2",
+        "pulse_density": 22.7848,
+        "point_density": 53.1101,
+        "area_m2": 2576.2338
+    },
+    {
+        "fid": 208,
+        "site": "PPO_Y_17",
+        "plot_number": 3,
+        "site_type": "PPO",
+        "site_plot_id": "PPO_Y_17_P3",
+        "pulse_density": 22.7019,
+        "point_density": 57.5844,
+        "area_m2": 2249.6381
+    },
+    {
+        "fid": 209,
+        "site": "PPO_Y_17",
+        "plot_number": 4,
+        "site_type": "PPO",
+        "site_plot_id": "PPO_Y_17_P4",
+        "pulse_density": 23.0043,
+        "point_density": 53.0057,
+        "area_m2": 2797.3035
+    },
+    {
+        "fid": 210,
+        "site": "PPO_Y_17",
+        "plot_number": 5,
+        "site_type": "PPO",
+        "site_plot_id": "PPO_Y_17_P5",
+        "pulse_density": 23.1451,
+        "point_density": 58.6339,
+        "area_m2": 2558.2983
+    },
+    {
+        "fid": 216,
+        "site": "PPY_O_24",
+        "plot_number": 1,
+        "site_type": "PPY",
+        "site_plot_id": "PPY_O_24_P1",
+        "pulse_density": 30.9333,
+        "point_density": 51.0996,
+        "area_m2": 2203.3245
+    },
+    {
+        "fid": 217,
+        "site": "PPY_O_24",
+        "plot_number": 2,
+        "site_type": "PPY",
+        "site_plot_id": "PPY_O_24_P2",
+        "pulse_density": 30.0594,
+        "point_density": 47.8929,
+        "area_m2": 2605.7716
+    },
+    {
+        "fid": 218,
+        "site": "PPY_O_24",
+        "plot_number": 3,
+        "site_type": "PPY",
+        "site_plot_id": "PPY_O_24_P3",
+        "pulse_density": 30.8439,
+        "point_density": 47.0773,
+        "area_m2": 2670.8014
+    },
+    {
+        "fid": 219,
+        "site": "PPY_O_24",
+        "plot_number": 4,
+        "site_type": "PPY",
+        "site_plot_id": "PPY_O_24_P4",
+        "pulse_density": 30.4874,
+        "point_density": 51.1581,
+        "area_m2": 2354.1523
+    },
+    {
+        "fid": 220,
+        "site": "PPY_O_24",
+        "plot_number": 5,
+        "site_type": "PPY",
+        "site_plot_id": "PPY_O_24_P5",
+        "pulse_density": 31.0762,
+        "point_density": 49.6432,
+        "area_m2": 2602.3106
+    },
+    {
+        "fid": 221,
+        "site": "PPY_O_31",
+        "plot_number": 1,
+        "site_type": "PPY",
+        "site_plot_id": "PPY_O_31_P1",
+        "pulse_density": 39.4874,
+        "point_density": 68.5373,
+        "area_m2": 2268.6759
+    },
+    {
+        "fid": 222,
+        "site": "PPY_O_31",
+        "plot_number": 2,
+        "site_type": "PPY",
+        "site_plot_id": "PPY_O_31_P2",
+        "pulse_density": 38.8033,
+        "point_density": 69.9722,
+        "area_m2": 2528.4182
+    },
+    {
+        "fid": 223,
+        "site": "PPY_O_31",
+        "plot_number": 3,
+        "site_type": "PPY",
+        "site_plot_id": "PPY_O_31_P3",
+        "pulse_density": 38.3762,
+        "point_density": 69.0242,
+        "area_m2": 2787.716
+    },
+    {
+        "fid": 224,
+        "site": "PPY_O_31",
+        "plot_number": 4,
+        "site_type": "PPY",
+        "site_plot_id": "PPY_O_31_P4",
+        "pulse_density": 38.2585,
+        "point_density": 68.9197,
+        "area_m2": 2312.5595
+    },
+    {
+        "fid": 225,
+        "site": "PPY_O_31",
+        "plot_number": 5,
+        "site_type": "PPY",
+        "site_plot_id": "PPY_O_31_P5",
+        "pulse_density": 39.6092,
+        "point_density": 68.5839,
+        "area_m2": 2185.9798
+    },
+    {
+        "fid": 246,
+        "site": "ULM_27",
+        "plot_number": 1,
+        "site_type": "ULM",
+        "site_plot_id": "ULM_27_P1",
+        "pulse_density": 32.7843,
+        "point_density": 70.7736,
+        "area_m2": 2549.7227
+    },
+    {
+        "fid": 247,
+        "site": "ULM_27",
+        "plot_number": 2,
+        "site_type": "ULM",
+        "site_plot_id": "ULM_27_P2",
+        "pulse_density": 28.4825,
+        "point_density": 60.2807,
+        "area_m2": 2349.3756
+    },
+    {
+        "fid": 248,
+        "site": "ULM_27",
+        "plot_number": 3,
+        "site_type": "ULM",
+        "site_plot_id": "ULM_27_P3",
+        "pulse_density": 25.0543,
+        "point_density": 55.694,
+        "area_m2": 2476.1029
+    },
+    {
+        "fid": 249,
+        "site": "ULM_27",
+        "plot_number": 4,
+        "site_type": "ULM",
+        "site_plot_id": "ULM_27_P4",
+        "pulse_density": 28.1135,
+        "point_density": 64.4436,
+        "area_m2": 2512.4911
+    },
+    {
+        "fid": 250,
+        "site": "ULM_27",
+        "plot_number": 5,
+        "site_type": "ULM",
+        "site_plot_id": "ULM_27_P5",
+        "pulse_density": 27.78,
+        "point_density": 57.3073,
+        "area_m2": 2662.349
+    },
+    {
+        "fid": 266,
+        "site": "ULM_80",
+        "plot_number": 1,
+        "site_type": "ULM",
+        "site_plot_id": "ULM_80_P1",
+        "pulse_density": 70.0679,
+        "point_density": 174.7835,
+        "area_m2": 2002.7858
+    },
+    {
+        "fid": 267,
+        "site": "ULM_80",
+        "plot_number": 2,
+        "site_type": "ULM",
+        "site_plot_id": "ULM_80_P2",
+        "pulse_density": 67.827,
+        "point_density": 159.2975,
+        "area_m2": 2988.5585
+    },
+    {
+        "fid": 268,
+        "site": "ULM_80",
+        "plot_number": 3,
+        "site_type": "ULM",
+        "site_plot_id": "ULM_80_P3",
+        "pulse_density": 68.3763,
+        "point_density": 167.3967,
+        "area_m2": 2257.4044
+    },
+    {
+        "fid": 269,
+        "site": "ULM_80",
+        "plot_number": 4,
+        "site_type": "ULM",
+        "site_plot_id": "ULM_80_P4",
+        "pulse_density": 68.4671,
+        "point_density": 180.421,
+        "area_m2": 2758.6808
+    },
+    {
+        "fid": 270,
+        "site": "ULM_80",
+        "plot_number": 5,
+        "site_type": "ULM",
+        "site_plot_id": "ULM_80_P5",
+        "pulse_density": 68.6443,
+        "point_density": 185.4191,
+        "area_m2": 2214.314
+    },
+    {
+        "fid": 281,
+        "site": "ULO_188",
+        "plot_number": 1,
+        "site_type": "ULO",
+        "site_plot_id": "ULO_188_P1",
+        "pulse_density": 25.5873,
+        "point_density": 49.8196,
+        "area_m2": 2477.3994
+    },
+    {
+        "fid": 282,
+        "site": "ULO_188",
+        "plot_number": 2,
+        "site_type": "ULO",
+        "site_plot_id": "ULO_188_P2",
+        "pulse_density": 23.9479,
+        "point_density": 45.0643,
+        "area_m2": 2516.2493
+    },
+    {
+        "fid": 283,
+        "site": "ULO_188",
+        "plot_number": 3,
+        "site_type": "ULO",
+        "site_plot_id": "ULO_188_P3",
+        "pulse_density": 24.4024,
+        "point_density": 45.6698,
+        "area_m2": 2495.9835
+    },
+    {
+        "fid": 284,
+        "site": "ULO_188",
+        "plot_number": 4,
+        "site_type": "ULO",
+        "site_plot_id": "ULO_188_P4",
+        "pulse_density": 25.8167,
+        "point_density": 47.296,
+        "area_m2": 2692.6393
+    },
+    {
+        "fid": 285,
+        "site": "ULO_188",
+        "plot_number": 5,
+        "site_type": "ULO",
+        "site_plot_id": "ULO_188_P5",
+        "pulse_density": 25.3931,
+        "point_density": 50.1011,
+        "area_m2": 2004.2864
+    },
+    {
+        "fid": 291,
+        "site": "ULO_237",
+        "plot_number": 1,
+        "site_type": "ULO",
+        "site_plot_id": "ULO_237_P1",
+        "pulse_density": 26.7554,
+        "point_density": 54.6629,
+        "area_m2": 2485.8192
+    },
+    {
+        "fid": 292,
+        "site": "ULO_237",
+        "plot_number": 2,
+        "site_type": "ULO",
+        "site_plot_id": "ULO_237_P2",
+        "pulse_density": 27.7328,
+        "point_density": 57.0136,
+        "area_m2": 2713.9296
+    },
+    {
+        "fid": 293,
+        "site": "ULO_237",
+        "plot_number": 3,
+        "site_type": "ULO",
+        "site_plot_id": "ULO_237_P3",
+        "pulse_density": 26.4325,
+        "point_density": 56.215,
+        "area_m2": 2440.3277
+    },
+    {
+        "fid": 294,
+        "site": "ULO_237",
+        "plot_number": 4,
+        "site_type": "ULO",
+        "site_plot_id": "ULO_237_P4",
+        "pulse_density": 27.6114,
+        "point_density": 62.3237,
+        "area_m2": 2784.5744
+    },
+    {
+        "fid": 295,
+        "site": "ULO_237",
+        "plot_number": 5,
+        "site_type": "ULO",
+        "site_plot_id": "ULO_237_P5",
+        "pulse_density": 27.7953,
+        "point_density": 61.17,
+        "area_m2": 2482.8663
+    },
+    {
+        "fid": 311,
+        "site": "ULY_Y_231",
+        "plot_number": 1,
+        "site_type": "ULY",
+        "site_plot_id": "ULY_Y_231_P1",
+        "pulse_density": 46.5356,
+        "point_density": 88.4436,
+        "area_m2": 2507.3505
+    },
+    {
+        "fid": 317,
+        "site": "ULY_Y_231",
+        "plot_number": 2,
+        "site_type": "ULY",
+        "site_plot_id": "ULY_Y_231_P2",
+        "pulse_density": 43.9128,
+        "point_density": 83.2624,
+        "area_m2": 2466.0477
+    },
+    {
+        "fid": 318,
+        "site": "ULY_Y_231",
+        "plot_number": 3,
+        "site_type": "ULY",
+        "site_plot_id": "ULY_Y_231_P3",
+        "pulse_density": 42.2899,
+        "point_density": 79.1187,
+        "area_m2": 2583.4982
+    },
+    {
+        "fid": 319,
+        "site": "ULY_Y_231",
+        "plot_number": 4,
+        "site_type": "ULY",
+        "site_plot_id": "ULY_Y_231_P4",
+        "pulse_density": 45.5403,
+        "point_density": 89.7319,
+        "area_m2": 2395.5707
+    },
+    {
+        "fid": 320,
+        "site": "ULY_Y_231",
+        "plot_number": 5,
+        "site_type": "ULY",
+        "site_plot_id": "ULY_Y_231_P5",
+        "pulse_density": 39.1817,
+        "point_density": 76.0435,
+        "area_m2": 2500.2256
+    },
+    {
+        "fid": 326,
+        "site": "ULY_Y_96",
+        "plot_number": 1,
+        "site_type": "ULY",
+        "site_plot_id": "ULY_Y_96_P1",
+        "pulse_density": 27.366,
+        "point_density": 43.1946,
+        "area_m2": 2523.9748
+    },
+    {
+        "fid": 327,
+        "site": "ULY_Y_96",
+        "plot_number": 2,
+        "site_type": "ULY",
+        "site_plot_id": "ULY_Y_96_P2",
+        "pulse_density": 27.5122,
+        "point_density": 39.1604,
+        "area_m2": 2524.3333
+    },
+    {
+        "fid": 328,
+        "site": "ULY_Y_96",
+        "plot_number": 3,
+        "site_type": "ULY",
+        "site_plot_id": "ULY_Y_96_P3",
+        "pulse_density": 26.7212,
+        "point_density": 37.5315,
+        "area_m2": 2376.4304
+    },
+    {
+        "fid": 329,
+        "site": "ULY_Y_96",
+        "plot_number": 4,
+        "site_type": "ULY",
+        "site_plot_id": "ULY_Y_96_P4",
+        "pulse_density": 24.7236,
+        "point_density": 30.2031,
+        "area_m2": 2500.2419
+    },
+    {
+        "fid": 330,
+        "site": "ULY_Y_96",
+        "plot_number": 5,
+        "site_type": "ULY",
+        "site_plot_id": "ULY_Y_96_P5",
+        "pulse_density": 25.7612,
+        "point_density": 32.6649,
+        "area_m2": 2454.0438
+    }
+]
