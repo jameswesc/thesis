@@ -23,10 +23,10 @@
   },
   // Replace Z coordinate with height above ground
   // Put original Z coordinate in its own field
-  // {
-  //   "type": "filters.ferry",
-  //   "dimensions": "Z=>OriginalZ,HeightAboveGround=>Z"
-  // },
+  {
+    "type": "filters.ferry",
+    "dimensions": "Z=>OriginalZ,HeightAboveGround=>Z"
+  },
   // Remove statistical outliers
   {
     "type": "filters.outlier",
