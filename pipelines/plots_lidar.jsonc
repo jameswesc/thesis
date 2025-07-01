@@ -1,7 +1,7 @@
 [
     {
         "type": "readers.copc",
-        "filename": "{{ data_dir }}/normalised-lidar-sites/{{ site }}.copc.laz",
+        "filename": "{{ data_dir }}/sites/MGA2020/lidar/{{ site }}.copc.laz",
         "polygon": "{{ polygon_wkt }}"
     },
     // Remove noise and other points
@@ -9,8 +9,8 @@
     // Write as COPC LAZ
     {
         "type": "writers.copc",
-        "filename": "{{ data_dir }}/lidar-plots-copc/{{ site_plot_id }}.copc.laz",
-        "forward": "header,scale,offset",
+        "filename": "{{ data_dir }}/plots/MGA2020/lidar/{{ site_plot_id }}.copc.laz",
+        "forward": "scale,offset",
         "extra_dims": "all"
     }
 ]

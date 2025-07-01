@@ -280,7 +280,7 @@ def main(
     # Execute pipeline for each loop iteration
     click.echo(f"Starting sequential execution of {len(loop_items)} iterations...")
     start_time = time.time()
-    
+
     total_points = 0
     successful_iterations = 0
     failed_iterations = []
@@ -326,7 +326,7 @@ def main(
     click.echo(f"\n{'=' * 60}")
     click.echo("EXECUTION SUMMARY")
     click.echo(f"{'=' * 60}")
-    
+
     if dry_run:
         click.echo("Dry run complete!")
         click.echo(
@@ -340,7 +340,7 @@ def main(
         click.echo(f"Total points processed: {total_points:,}")
 
     click.echo(f"Execution time: {execution_time:.2f} seconds")
-    
+
     if len(loop_items) > 1:
         avg_time_per_iteration = execution_time / len(loop_items)
         click.echo(f"Average time per iteration: {avg_time_per_iteration:.2f} seconds")

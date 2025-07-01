@@ -66,6 +66,7 @@ from jinja2 import (
 @dataclass
 class ExecutionResult:
     """Result of a single pipeline execution."""
+
     iteration: int
     success: bool
     point_count: int
@@ -150,26 +151,28 @@ def execute_pipeline_internal(
         raise Exception(f"Error executing PDAL pipeline: {e}")
 
 
-def execute_single_iteration(args: Tuple[int, List[Dict[str, Any]], Dict[str, Any], bool]) -> ExecutionResult:
+def execute_single_iteration(
+    args: Tuple[int, List[Dict[str, Any]], Dict[str, Any], bool],
+) -> ExecutionResult:
     """
     Execute a single pipeline iteration. This function needs to be at module level
     for multiprocessing to work properly.
-    
+
     Args:
         args: Tuple containing (iteration_number, pipeline_config, context, dry_run)
-    
+
     Returns:
         ExecutionResult with success/failure information
     """
     iteration, pipeline_config, context, dry_run = args
-    
+
     try:
         point_count = execute_pipeline_internal(pipeline_config, context, dry_run)
         return ExecutionResult(
             iteration=iteration,
             success=True,
             point_count=point_count,
-            context_vars=list(context.keys()) if context else []
+            context_vars=list(context.keys()) if context else [],
         )
     except Exception as e:
         return ExecutionResult(
@@ -177,7 +180,7 @@ def execute_single_iteration(args: Tuple[int, List[Dict[str, Any]], Dict[str, An
             success=False,
             point_count=0,
             error_message=str(e),
-            context_vars=list(context.keys()) if context else []
+            context_vars=list(context.keys()) if context else [],
         )
 
 
@@ -238,7 +241,7 @@ def main(
     in the loop array. Each loop item should be a dictionary with the same keys.
 
     Use --dry-run to see the processed pipeline JSON without executing it.
-    
+
     This parallel version executes multiple pipeline iterations concurrently
     using ProcessPoolExecutor for improved performance.
     """
@@ -311,11 +314,13 @@ def main(
     # Prepare arguments for parallel execution
     execution_args = []
     skipped_iterations = []
-    
+
     for i, loop_item in enumerate(loop_items, 1):
         # Validate loop item
         if not isinstance(loop_item, dict):
-            click.echo(f"Skipping iteration {i}: Loop item is not a dictionary", err=True)
+            click.echo(
+                f"Skipping iteration {i}: Loop item is not a dictionary", err=True
+            )
             skipped_iterations.append(i)
             continue
 
@@ -331,44 +336,56 @@ def main(
     # Execute in parallel
     click.echo(f"Starting parallel execution of {len(execution_args)} iterations...")
     start_time = time.time()
-    
+
     results = []
     completed_count = 0
-    
+
     with ProcessPoolExecutor(max_workers=max_workers) as executor:
         # Submit all tasks
         future_to_iteration = {
-            executor.submit(execute_single_iteration, args): args[0] 
+            executor.submit(execute_single_iteration, args): args[0]
             for args in execution_args
         }
-        
+
         # Collect results as they complete
         for future in as_completed(future_to_iteration):
             iteration = future_to_iteration[future]
             completed_count += 1
-            
+
             try:
                 result = future.result()
                 results.append(result)
-                
+
                 # Progress reporting
                 progress = f"[{completed_count}/{len(execution_args)}]"
                 if result.success:
                     if dry_run:
-                        click.echo(f"{progress} Iteration {result.iteration}: ✓ Pipeline formatted successfully")
+                        click.echo(
+                            f"{progress} Iteration {result.iteration}: ✓ Pipeline formatted successfully"
+                        )
                     else:
-                        click.echo(f"{progress} Iteration {result.iteration}: ✓ Processed {result.point_count:,} points")
+                        click.echo(
+                            f"{progress} Iteration {result.iteration}: ✓ Processed {result.point_count:,} points"
+                        )
                 else:
-                    click.echo(f"{progress} Iteration {result.iteration}: ✗ {result.error_message}", err=True)
-                    
+                    click.echo(
+                        f"{progress} Iteration {result.iteration}: ✗ {result.error_message}",
+                        err=True,
+                    )
+
             except Exception as e:
-                click.echo(f"[{completed_count}/{len(execution_args)}] Iteration {iteration}: ✗ Unexpected error: {e}", err=True)
-                results.append(ExecutionResult(
-                    iteration=iteration,
-                    success=False,
-                    point_count=0,
-                    error_message=f"Unexpected error: {e}"
-                ))
+                click.echo(
+                    f"[{completed_count}/{len(execution_args)}] Iteration {iteration}: ✗ Unexpected error: {e}",
+                    err=True,
+                )
+                results.append(
+                    ExecutionResult(
+                        iteration=iteration,
+                        success=False,
+                        point_count=0,
+                        error_message=f"Unexpected error: {e}",
+                    )
+                )
 
     end_time = time.time()
     execution_time = end_time - start_time
@@ -384,22 +401,30 @@ def main(
     click.echo(f"\n{'=' * 60}")
     click.echo("EXECUTION SUMMARY")
     click.echo(f"{'=' * 60}")
-    
+
     if dry_run:
         click.echo("Dry run complete!")
-        click.echo(f"Successfully formatted: {len(successful_results)}/{len(results)} iterations")
+        click.echo(
+            f"Successfully formatted: {len(successful_results)}/{len(results)} iterations"
+        )
     else:
         click.echo("Pipeline execution complete!")
-        click.echo(f"Successfully processed: {len(successful_results)}/{len(results)} iterations")
+        click.echo(
+            f"Successfully processed: {len(successful_results)}/{len(results)} iterations"
+        )
         click.echo(f"Total points processed: {total_points:,}")
 
     click.echo(f"Execution time: {execution_time:.2f} seconds")
-    
+
     if len(results) > 1:
-        click.echo(f"Parallel efficiency: {len(results)} iterations completed in {execution_time:.2f}s")
+        click.echo(
+            f"Parallel efficiency: {len(results)} iterations completed in {execution_time:.2f}s"
+        )
         if not dry_run:
             # Only show throughput for actual executions
-            points_per_second = total_points / execution_time if execution_time > 0 else 0
+            points_per_second = (
+                total_points / execution_time if execution_time > 0 else 0
+            )
             click.echo(f"Processing throughput: {points_per_second:,.0f} points/second")
 
     if skipped_iterations:
