@@ -1,7 +1,8 @@
 .DS_Store
 .ropeproject
 *.laz
+*.tif
+*.tif.aux.xml
 *.parquet
 .Rproj.user
 openrc.sh
-data/lidar-plots-csv/*.csv
