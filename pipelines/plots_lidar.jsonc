@@ -1,7 +1,7 @@
 [
     {
         "type": "readers.copc",
-        "filename": "{{ data_dir }}/sites/MGA2020/lidar/{{ site }}.copc.laz",
+        "filename": "{{ data_dir }}/sites/lidar/{{ site }}.copc.laz",
         "polygon": "{{ polygon_wkt }}"
     },
     // Remove noise and other points
@@ -9,7 +9,19 @@
     // Write as COPC LAZ
     {
         "type": "writers.copc",
-        "filename": "{{ data_dir }}/plots/MGA2020/lidar/{{ site_plot_id }}.copc.laz",
+        "filename": "{{ data_dir }}/plots/lidar/{{ site_plot_id }}.copc.laz",
+        "forward": "scale,offset",
+        "extra_dims": "all"
+    },
+    // Move height above ground into Z coordinate
+    {
+        "type": "filters.ferry",
+        "dimensions": "Z => Altitude, HeightAboveGround => Z"
+    },
+    // Write a normalised copc as well
+    {
+        "type": "writers.copc",
+        "filename": "{{ data_dir }}/plots/lidar-normalised/{{ site_plot_id }}.copc.laz",
         "forward": "scale,offset",
         "extra_dims": "all"
     }
