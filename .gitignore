@@ -6,3 +6,5 @@
 *.parquet
 .Rproj.user
 openrc.sh
+
+__pycache__
