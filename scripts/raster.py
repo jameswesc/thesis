@@ -31,7 +31,7 @@ def chm(output_file: str, bounds: str | None = None) -> pdal.Writer:
         resolution=1,
         output_type="max",
         bounds=bounds,
-        where="ReturnNumber == 1",
+        where="(ReturnNumber == 1) && (HeightAboveGround >= 0.5)",
         dimension="HeightAboveGround",
         data_type="float32",
     )
