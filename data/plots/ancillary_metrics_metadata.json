@@ -1,0 +1,8 @@
+{
+    "plot_area": "Area of the plot geometry `geometry.area` (Unit: m\u00b2)",
+    "pulse_density": "Number of first returns divided by plot_area (Unit: pulses per m\u00b2)",
+    "point_density": "Number of all returns divided by plot area (Unit: points per m\u00b2)",
+    "min_scan_angle": "Minimum scan angle (Unit: degrees)",
+    "max_scan_angle": "Maximum scan angle (Unit: degrees)",
+    "scan_angle_half_width": "Scan angle swath width. Calculated as max(abs(min_scan_angle), abs(max_scan_angle)). (Unit: degrees)"
+}

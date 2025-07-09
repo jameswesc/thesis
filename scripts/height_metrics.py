@@ -1,3 +1,5 @@
+import json
+
 import geopandas
 import numpy as np
 import pandas as pd
@@ -72,5 +74,25 @@ plots_with_height_metrics = pd.concat([plots, height_metrics], axis=1).drop(
     columns="geometry"
 )
 plots_with_height_metrics.to_json(
-    "data/plots/height_metrics.json", orient="records", indent=2
+    "data/plots/height_metrics.json", orient="records", indent=4
+)
+
+height_metrics_metadata = {
+    "mean_height": "Mean height above ground of vegetation points (points >= 0.5 m) (Unit: m)",
+    "q100": "Maximum height (100th percentile) above ground of vegetation points (points >= 0.5 m) (Unit: m)",
+    "q99": "99th percentile height above ground of vegetation points (points >= 0.5 m) (Unit: m)",
+    "q95": "95th percentile height above ground of vegetation points (points >= 0.5 m) (Unit: m)",
+    "q75": "75th percentile height above ground of vegetation points (points >= 0.5 m) (Unit: m)",
+    "q50": "Median height above ground of vegetation points (points >= 0.5 m) (Unit: m)",
+    "q25": "25th percentile height above ground of vegetation points (points >= 0.5 m) (Unit: m)",
+    "q5": "5th percentile height above ground of vegetation points (points >= 0.5 m) (Unit: m)",
+    "q1": "1st percentile height above ground of vegetation points (points >= 0.5 m) (Unit: m)",
+    "q0": "Minimum height (0th percentile) above ground of vegetation points (points >= 0.5 m) (Unit: m)",
+    "mean_canopy_height": "Mean pixel from 1m² canopy height model (CHM). CHM is defined as maximum height within 1m² cell. (Unit: m)",
+}
+
+json.dump(
+    height_metrics_metadata,
+    open("data/plots/height_metrics_metadata.json", "w"),
+    indent=4,
 )

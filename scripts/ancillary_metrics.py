@@ -1,3 +1,5 @@
+import json
+
 import geopandas
 import numpy as np
 import pandas as pd
@@ -57,7 +59,20 @@ plots_with_ancillary_metrics = pd.concat([plots, ancillary_metrics], axis=1).dro
     columns="geometry"
 )
 plots_with_ancillary_metrics.to_json(
-    "data/plots/ancillary_metrics.json", orient="records", indent=2
+    "data/plots/ancillary_metrics.json", orient="records", indent=4
 )
 
-# print(ancillary_metrics)
+ancillary_metrics_metadata = {
+    "plot_area": "Area of the plot geometry `geometry.area` (Unit: m²)",
+    "pulse_density": "Number of first returns divided by plot_area (Unit: pulses per m²)",
+    "point_density": "Number of all returns divided by plot area (Unit: points per m²)",
+    "min_scan_angle": "Minimum scan angle (Unit: degrees)",
+    "max_scan_angle": "Maximum scan angle (Unit: degrees)",
+    "scan_angle_half_width": "Scan angle swath width. Calculated as max(abs(min_scan_angle), abs(max_scan_angle)). (Unit: degrees)",
+}
+
+json.dump(
+    ancillary_metrics_metadata,
+    open("data/plots/ancillary_metrics_metadata.json", "w"),
+    indent=4,
+)
