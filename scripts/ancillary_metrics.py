@@ -17,7 +17,7 @@ def calculate_ancillary_metrics(row: Series):
     site_plot_id = row.site_plot_id
     assert isinstance(site_plot_id, str), "A plot must have a site plot ID"
 
-    print(f"Calculating height metrics for {site_plot_id}")
+    print(f"Calculating metrics for {site_plot_id}")
 
     site = row.site
     assert isinstance(site, str), "A plot must have a site"
