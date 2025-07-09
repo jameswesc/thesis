@@ -1,6 +1,0 @@
-{
-    "proportion_above_2": "Number of points with height above ground > 2, divided by total number of points. (Unit: unitless fraction)",
-    "deep_gap_fraction_05": "Number of gap pixels in CHM divided by total number of pixel. A gap is a pixel with a height <= 0.5 m. (Unit: unitless fraction)",
-    "deep_gap_fraction_2": "Number of gap pixels in CHM divided by total number of pixel. A gap is a pixel with a height <= 2 m. (Unit: unitless fraction)",
-    "gap_fraction_profile": "TODO"
-}

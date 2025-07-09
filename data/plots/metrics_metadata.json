@@ -1,0 +1,176 @@
+{
+    "mean_height": {
+        "title": "Mean Height",
+        "description": "Mean height above ground of vegetation points (Z >= 0.5 m)",
+        "unit": "m",
+        "category": "height"
+    },
+    "q100": {
+        "title": "Maximum Height (Q100)",
+        "description": "Maximum height (100th percentile) above ground of vegetation points (Z >= 0.5 m)",
+        "unit": "m",
+        "category": "height"
+    },
+    "q99": {
+        "title": "99th Percentile Height (Q99)",
+        "description": "99th percentile height above ground of vegetation points (Z >= 0.5 m)",
+        "unit": "m",
+        "category": "height"
+    },
+    "q95": {
+        "title": "95th Percentile Height (Q95)",
+        "description": "95th percentile height above ground of vegetation points (Z >= 0.5 m)",
+        "unit": "m",
+        "category": "height"
+    },
+    "q75": {
+        "title": "75th Percentile Height (Q75)",
+        "description": "75th percentile height above ground of vegetation points (Z >= 0.5 m)",
+        "unit": "m",
+        "category": "height"
+    },
+    "q50": {
+        "title": "Median Height (Q50)",
+        "description": "Median height above ground of vegetation points (Z >= 0.5 m)",
+        "unit": "m",
+        "category": "height"
+    },
+    "q25": {
+        "title": "25th Percentile Height (Q25)",
+        "description": "25th percentile height above ground of vegetation points (Z >= 0.5 m)",
+        "unit": "m",
+        "category": "height"
+    },
+    "q5": {
+        "title": "5th Percentile Height (Q5)",
+        "description": "5th percentile height above ground of vegetation points (Z >= 0.5 m)",
+        "unit": "m",
+        "category": "height"
+    },
+    "q1": {
+        "title": "1st Percentile Height (Q1)",
+        "description": "1st percentile height above ground of vegetation points (Z >= 0.5 m)",
+        "unit": "m",
+        "category": "height"
+    },
+    "q0": {
+        "title": "Minimum Height (Q0)",
+        "description": "Minimum height (0th percentile) above ground of vegetation points (Z >= 0.5 m)",
+        "unit": "m",
+        "category": "height"
+    },
+    "mean_canopy_height": {
+        "title": "Mean Canopy Height",
+        "description": "Mean pixel from 1m\u00b2 canopy height model (CHM). CHM is defined as maximum height within 1m\u00b2 cell",
+        "unit": "m",
+        "category": "height"
+    },
+    "proportion_above_2": {
+        "title": "Proportion Above 2m",
+        "description": "Number of points with height above ground > 2, divided by total number of points",
+        "unit": "unitless fraction",
+        "category": "openness"
+    },
+    "deep_gap_fraction_05": {
+        "title": "Deep Gap Fraction (0.5m)",
+        "description": "Number of gap pixels in CHM divided by total number of pixel. A gap is a pixel with a height <= 0.5 m",
+        "unit": "unitless fraction",
+        "category": "openness"
+    },
+    "deep_gap_fraction_2": {
+        "title": "Deep Gap Fraction (2m)",
+        "description": "Number of gap pixels in CHM divided by total number of pixel. A gap is a pixel with a height <= 2 m",
+        "unit": "unitless fraction",
+        "category": "openness"
+    },
+    "gap_fraction_profile": {
+        "title": "Gap Fraction Profile",
+        "description": "Gap fraction profile - vertical distribution of gaps",
+        "unit": "unitless",
+        "category": "openness"
+    },
+    "top_rugosity": {
+        "title": "Top Rugosity",
+        "description": "Standard deviation of 1m\u00b2 canopy height model",
+        "unit": "m",
+        "category": "exterior"
+    },
+    "rumple_index": {
+        "title": "Rumple Index",
+        "description": "Rumple index - ratio of canopy surface area to ground surface area",
+        "unit": "unitless",
+        "category": "exterior"
+    },
+    "sd_of_height": {
+        "title": "Standard Deviation of Height",
+        "description": "Standard deviation of vegetation points",
+        "unit": "m",
+        "category": "interior"
+    },
+    "coeff_var_of_height": {
+        "title": "Coefficient of Variation of Height",
+        "description": "Coefficient of variation of height. SDH / MH",
+        "unit": "unitless",
+        "category": "interior"
+    },
+    "fhd": {
+        "title": "Foliage Height Diversity",
+        "description": "Foliage Height Diversity",
+        "unit": "unitless",
+        "category": "interior"
+    },
+    "gini_coeff_index": {
+        "title": "Gini Coefficient Index",
+        "description": "Gini coefficient index",
+        "unit": "unitless",
+        "category": "interior"
+    },
+    "mean_of_sd_of_height": {
+        "title": "Mean of Standard Deviation of Height",
+        "description": "Mean of standard deviation of height",
+        "unit": "m",
+        "category": "interior"
+    },
+    "sd_of_sd_of_height": {
+        "title": "Standard Deviation of Standard Deviation of Height",
+        "description": "Standard deviation of standard deviation of height",
+        "unit": "m",
+        "category": "interior"
+    },
+    "plot_area": {
+        "title": "Plot Area",
+        "description": "Area of the plot geometry `geometry.area`",
+        "unit": "m\u00b2",
+        "category": "ancillary"
+    },
+    "pulse_density": {
+        "title": "Pulse Density",
+        "description": "Number of first returns divided by plot_area",
+        "unit": "pulses per m\u00b2",
+        "category": "ancillary"
+    },
+    "point_density": {
+        "title": "Point Density",
+        "description": "Number of all returns divided by plot area",
+        "unit": "points per m\u00b2",
+        "category": "ancillary"
+    },
+    "min_scan_angle": {
+        "title": "Minimum Scan Angle",
+        "description": "Minimum scan angle",
+        "unit": "degrees",
+        "category": "ancillary"
+    },
+    "max_scan_angle": {
+        "title": "Maximum Scan Angle",
+        "description": "Maximum scan angle",
+        "unit": "degrees",
+        "category": "ancillary"
+    },
+    "scan_angle_half_width": {
+        "title": "Scan Angle Half Width",
+        "description": "Scan angle swath width. Calculated as max(abs(min_scan_angle), abs(max_scan_angle))",
+        "unit": "degrees",
+        "category": "ancillary"
+    }
+}

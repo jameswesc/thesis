@@ -1,61 +1,53 @@
-import json
-
 import geopandas
 import numpy as np
 import pandas as pd
 import rasterio
-import shapely
-from pandas import Series
+from numpy.typing import NDArray
 from rasterio.mask import mask
 
-plots = geopandas.read_file("data/plots/plots.geo.json")
-sites = geopandas.read_file("data/sites/sites.geo.json")
+exterior_metrics_metadata = {
+    "top_rugosity": {
+        "title": "Top Rugosity",
+        "description": "Standard deviation of 1m² canopy height model",
+        "unit": "m",
+        "category": "exterior",
+    },
+    "rumple_index": {
+        "title": "Rumple Index",
+        "description": "Rumple index - ratio of canopy surface area to ground surface area",
+        "unit": "unitless",
+        "category": "exterior",
+    },
+}
 
 
-def calculate_exterior_metrics(row: Series):
-    site_plot_id = row.site_plot_id
-    assert isinstance(site_plot_id, str), "A plot must have a site plot ID"
+def calculate_exterior_metrics(chm: NDArray):
+    top_rugosity = np.std(chm)
 
-    print(f"Calculating metrics for {site_plot_id}")
-
-    site = row.site
-    assert isinstance(site, str), "A plot must have a site"
-
-    geometry = row.geometry
-    assert isinstance(geometry, shapely.Polygon), "A plots geometry must be a polygon"
-
-    chm_file_name = f"data/sites/raster/{site}_chm.tif"
-
-    with rasterio.open(chm_file_name) as chm:
-        masked_data, masked_transform = mask(
-            chm, [geometry], crop=True, nodata=chm.nodata
-        )
-
-        chm_data = masked_data[0]
-        # Remove nodata pixels
-        chm_data = chm_data[chm_data != chm.nodata]
-        top_rugosity = np.std(chm_data)
-
-    metrics = {"top_rugosity": top_rugosity, "rumple_index": -999}
+    # TODO: Calculate rumple index
+    # For now, using placeholder value
+    metrics = {
+        "top_rugosity": top_rugosity,
+        "rumple_index": -999,  # Placeholder
+    }
 
     return pd.Series(metrics, dtype=float)
 
 
-exterior_metrics = plots.apply(calculate_exterior_metrics, axis=1)
-plots_with_exterior_metrics = pd.concat([plots, exterior_metrics], axis=1).drop(
-    columns="geometry"
-)
-plots_with_exterior_metrics.to_json(
-    "data/plots/exterior_metrics.json", orient="records", indent=4
-)
+if __name__ == "__main__":
+    plots = geopandas.read_file("data/plots/plots.geo.json")
+    plot = plots.iloc[0]
+    site = plot.site
+    geometry = plot.geometry
+    chm_file = f"data/sites/raster/{site}_chm.tif"
 
-exterior_metrics_metadata = {
-    "top_rugosity": "Standard deviation of 1m² canopy height model (Unit: m)",
-    "rumple_index": "TODO",
-}
+    with rasterio.open(chm_file) as chm_src:
+        masked_data, masked_transform = mask(
+            chm_src, [geometry], crop=True, nodata=chm_src.nodata
+        )
 
-json.dump(
-    exterior_metrics_metadata,
-    open("data/plots/exterior_metrics_metadata.json", "w"),
-    indent=4,
-)
+        chm = masked_data[0]
+        # Remove nodata pixels
+        chm = chm[chm != chm_src.nodata]
+
+    print(calculate_exterior_metrics(chm=chm))

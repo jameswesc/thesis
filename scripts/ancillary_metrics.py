@@ -1,40 +1,53 @@
-import json
-
 import geopandas
 import numpy as np
 import pandas as pd
 import pdal
 import shapely
-from pandas import Series
+from numpy.typing import NDArray
+from shapely.geometry import Polygon
 
-plots = geopandas.read_file("data/plots/plots.geo.json")
-sites = geopandas.read_file("data/sites/sites.geo.json")
+ancillary_metrics_metadata = {
+    "plot_area": {
+        "title": "Plot Area",
+        "description": "Area of the plot geometry",
+        "unit": "m²",
+        "category": "ancillary",
+    },
+    "pulse_density": {
+        "title": "Pulse Density",
+        "description": "Number of first returns divided by plot area",
+        "unit": "pulses per m²",
+        "category": "ancillary",
+    },
+    "point_density": {
+        "title": "Point Density",
+        "description": "Number of all returns divided by plot area",
+        "unit": "points per m²",
+        "category": "ancillary",
+    },
+    "min_scan_angle": {
+        "title": "Minimum Scan Angle",
+        "description": "Minimum scan angle",
+        "unit": "degrees",
+        "category": "ancillary",
+    },
+    "max_scan_angle": {
+        "title": "Maximum Scan Angle",
+        "description": "Maximum scan angle",
+        "unit": "degrees",
+        "category": "ancillary",
+    },
+    "scan_angle_half_width": {
+        "title": "Scan Angle Half Width",
+        "description": "Scan angle swath width. Calculated as max(abs(min_scan_angle), abs(max_scan_angle))",
+        "unit": "degrees",
+        "category": "ancillary",
+    },
+}
 
-# plots = plots.head(20)
 
-
-def calculate_ancillary_metrics(row: Series):
-    site_plot_id = row.site_plot_id
-    assert isinstance(site_plot_id, str), "A plot must have a site plot ID"
-
-    print(f"Calculating metrics for {site_plot_id}")
-
-    site = row.site
-    assert isinstance(site, str), "A plot must have a site"
-
-    geometry = row.geometry
-    assert isinstance(geometry, shapely.Polygon), "A plots geometry must be a polygon"
-
+def calculate_ancillary_metrics(points: NDArray, geometry: Polygon):
     plot_area = geometry.area
-
-    polygon_wkt = shapely.to_wkt(geometry, 2)
-    input_file = f"data/sites/lidar/{site}.copc.laz"
-
-    pl = pdal.Reader(input_file, type="readers.copc", polygon=polygon_wkt).pipeline()
-    pl.execute()
-
-    points = pl.arrays[0]
-    assert isinstance(points, np.ndarray), "Points should be a numpy array"
 
     first_returns = points[points["ReturnNumber"] == 1]
 
@@ -54,25 +67,16 @@ def calculate_ancillary_metrics(row: Series):
     return pd.Series(metrics, dtype=float)
 
 
-ancillary_metrics = plots.apply(calculate_ancillary_metrics, axis=1)
-plots_with_ancillary_metrics = pd.concat([plots, ancillary_metrics], axis=1).drop(
-    columns="geometry"
-)
-plots_with_ancillary_metrics.to_json(
-    "data/plots/ancillary_metrics.json", orient="records", indent=4
-)
+if __name__ == "__main__":
+    plots = geopandas.read_file("data/plots/plots.geo.json")
+    plot = plots.iloc[0]
+    site = plot.site
+    geometry = plot.geometry
+    polygon_wkt = shapely.to_wkt(geometry, 2)
+    lidar_file = f"data/sites/lidar/{site}.copc.laz"
 
-ancillary_metrics_metadata = {
-    "plot_area": "Area of the plot geometry `geometry.area` (Unit: m²)",
-    "pulse_density": "Number of first returns divided by plot_area (Unit: pulses per m²)",
-    "point_density": "Number of all returns divided by plot area (Unit: points per m²)",
-    "min_scan_angle": "Minimum scan angle (Unit: degrees)",
-    "max_scan_angle": "Maximum scan angle (Unit: degrees)",
-    "scan_angle_half_width": "Scan angle swath width. Calculated as max(abs(min_scan_angle), abs(max_scan_angle)). (Unit: degrees)",
-}
+    pl = pdal.Reader(lidar_file, type="readers.copc", polygon=polygon_wkt).pipeline()
+    pl.execute()
+    points = pl.arrays[0]
 
-json.dump(
-    ancillary_metrics_metadata,
-    open("data/plots/ancillary_metrics_metadata.json", "w"),
-    indent=4,
-)
+    print(calculate_ancillary_metrics(points=points, geometry=geometry))
