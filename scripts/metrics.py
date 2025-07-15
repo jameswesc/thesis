@@ -47,11 +47,22 @@ def calculate_metrics(row: Series):
         # Remove nodata pixels
         chm = chm[chm != chm_src.nodata]
 
+    # Read in SD of height pixels
+    sdh_file = f"data/sites/raster/{site}_sdh.tif"
+    with rasterio.open(sdh_file) as sdh_src:
+        masked_data, masked_transform = mask(
+            sdh_src, [geometry], crop=True, nodata=sdh_src.nodata
+        )
+
+        sdh = masked_data[0]
+        # Remove nodata pixels
+        sdh = sdh[sdh != sdh_src.nodata]
+
     # Calculate metrics
     height_metrics = calculate_height_metrics(points, chm)
     openness_metrics = calculate_openness_metrics(points, chm)
     exterior_metrics = calculate_exterior_metrics(chm)
-    interior_metrics = calculate_interior_metrics(points)
+    interior_metrics = calculate_interior_metrics(points, sdh)
     ancillary_metrics = calculate_ancillary_metrics(points, geometry)
 
     # Combine metrics

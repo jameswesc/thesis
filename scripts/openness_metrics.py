@@ -25,6 +25,7 @@ openness_metrics_metadata = {
         "unit": "unitless fraction",
         "category": "openness",
     },
+    # TODO
     "gap_fraction_profile": {
         "title": "Gap Fraction Profile",
         "description": "Gap fraction profile - vertical distribution of gaps",

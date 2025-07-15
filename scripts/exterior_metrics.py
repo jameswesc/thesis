@@ -12,6 +12,7 @@ exterior_metrics_metadata = {
         "unit": "m",
         "category": "exterior",
     },
+    # TODO
     "rumple_index": {
         "title": "Rumple Index",
         "description": "Rumple index - ratio of canopy surface area to ground surface area",

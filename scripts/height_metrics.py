@@ -14,6 +14,12 @@ height_metrics_metadata = {
         "unit": "m",
         "category": "height",
     },
+    "mean_canopy_height": {
+        "title": "Mean Canopy Height",
+        "description": "Mean pixel from 1m² canopy height model (CHM). CHM is defined as maximum height within 1m² cell",
+        "unit": "m",
+        "category": "height",
+    },
     "q100": {
         "title": "Maximum Height (Q100)",
         "description": "Maximum height (100th percentile) above ground of vegetation points (Z >= 0.5 m)",
@@ -68,12 +74,6 @@ height_metrics_metadata = {
         "unit": "m",
         "category": "height",
     },
-    "mean_canopy_height": {
-        "title": "Mean Canopy Height",
-        "description": "Mean pixel from 1m² canopy height model (CHM). CHM is defined as maximum height within 1m² cell",
-        "unit": "m",
-        "category": "height",
-    },
 }
 
 
@@ -83,6 +83,7 @@ def calculate_height_metrics(points: NDArray, chm: NDArray):
 
     metrics = {
         "mean_height": np.mean(Z),
+        "mean_canopy_height": np.mean(chm),
         "q100": np.percentile(Z, 100),
         "q99": np.percentile(Z, 99),
         "q95": np.percentile(Z, 95),
@@ -92,7 +93,6 @@ def calculate_height_metrics(points: NDArray, chm: NDArray):
         "q5": np.percentile(Z, 5),
         "q1": np.percentile(Z, 1),
         "q0": np.percentile(Z, 0),
-        "mean_canopy_height": np.mean(chm),
     }
 
     return pd.Series(metrics, dtype=float)

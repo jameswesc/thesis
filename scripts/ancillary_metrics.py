@@ -25,18 +25,6 @@ ancillary_metrics_metadata = {
         "unit": "points per m²",
         "category": "ancillary",
     },
-    "min_scan_angle": {
-        "title": "Minimum Scan Angle",
-        "description": "Minimum scan angle",
-        "unit": "degrees",
-        "category": "ancillary",
-    },
-    "max_scan_angle": {
-        "title": "Maximum Scan Angle",
-        "description": "Maximum scan angle",
-        "unit": "degrees",
-        "category": "ancillary",
-    },
     "scan_angle_half_width": {
         "title": "Scan Angle Half Width",
         "description": "Scan angle swath width. Calculated as max(abs(min_scan_angle), abs(max_scan_angle))",
@@ -59,8 +47,6 @@ def calculate_ancillary_metrics(points: NDArray, geometry: Polygon):
         "plot_area": plot_area,
         "pulse_density": len(first_returns) / plot_area,
         "point_density": len(points) / plot_area,
-        "min_scan_angle": min_scan,
-        "max_scan_angle": max_scan,
         "scan_angle_half_width": scan_angle_half_width,
     }
 

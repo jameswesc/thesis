@@ -14,6 +14,7 @@ for site, feature in sites_gdf.iterrows():
     dem_output_file = f"data/sites/raster/{site}_dem.tif"
     dsm_output_file = f"data/sites/raster/{site}_dsm.tif"
     chm_output_file = f"data/sites/raster/{site}_chm.tif"
+    sdh_output_file = f"data/sites/raster/{site}_sdh.tif"
     pulse_density_output_file = f"data/sites/raster/{site}_pulse_density.tif"
     point_density_output_file = f"data/sites/raster/{site}_point_density.tif"
     scan_angle_output_file = f"data/sites/raster/{site}_scan_angle.tif"
@@ -35,6 +36,7 @@ for site, feature in sites_gdf.iterrows():
         dem_output_file=dem_output_file,
         dsm_output_file=dsm_output_file,
         chm_output_file=chm_output_file,
+        sdh_output_file=sdh_output_file,
         pulse_density_output_file=pulse_density_output_file,
         point_density_output_file=point_density_output_file,
         scan_angle_output_file=scan_angle_output_file,

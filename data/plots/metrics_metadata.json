@@ -5,6 +5,12 @@
         "unit": "m",
         "category": "height"
     },
+    "mean_canopy_height": {
+        "title": "Mean Canopy Height",
+        "description": "Mean pixel from 1m\u00b2 canopy height model (CHM). CHM is defined as maximum height within 1m\u00b2 cell",
+        "unit": "m",
+        "category": "height"
+    },
     "q100": {
         "title": "Maximum Height (Q100)",
         "description": "Maximum height (100th percentile) above ground of vegetation points (Z >= 0.5 m)",
@@ -56,12 +62,6 @@
     "q0": {
         "title": "Minimum Height (Q0)",
         "description": "Minimum height (0th percentile) above ground of vegetation points (Z >= 0.5 m)",
-        "unit": "m",
-        "category": "height"
-    },
-    "mean_canopy_height": {
-        "title": "Mean Canopy Height",
-        "description": "Mean pixel from 1m\u00b2 canopy height model (CHM). CHM is defined as maximum height within 1m\u00b2 cell",
         "unit": "m",
         "category": "height"
     },
@@ -121,31 +121,31 @@
     },
     "gini_coeff_index": {
         "title": "Gini Coefficient Index",
-        "description": "Gini coefficient index",
+        "description": "Gini coefficient index, taken from https://pysal.org/inequality/generated/inequality.gini.Gini.html. Computed on vegetation points (Z > 0.5). Also see https://www.statsdirect.com/help/nonparametric_methods/gini.htm",
         "unit": "unitless",
         "category": "interior"
     },
     "mean_of_sd_of_height": {
-        "title": "Mean of Standard Deviation of Height",
-        "description": "Mean of standard deviation of height",
+        "title": "Mean of Standard Deviation of height",
+        "description": "Mean of pixels from the 1 m\u00b2 standard deviation of height of vegetation points (Z > 0.5) raster.",
         "unit": "m",
         "category": "interior"
     },
     "sd_of_sd_of_height": {
         "title": "Standard Deviation of Standard Deviation of Height",
-        "description": "Standard deviation of standard deviation of height",
+        "description": "Standard deviation of pixels from the 1 m\u00b2 standard deviation of height of vegetation points (Z > 0.5) raster.",
         "unit": "m",
         "category": "interior"
     },
     "plot_area": {
         "title": "Plot Area",
-        "description": "Area of the plot geometry `geometry.area`",
+        "description": "Area of the plot geometry",
         "unit": "m\u00b2",
         "category": "ancillary"
     },
     "pulse_density": {
         "title": "Pulse Density",
-        "description": "Number of first returns divided by plot_area",
+        "description": "Number of first returns divided by plot area",
         "unit": "pulses per m\u00b2",
         "category": "ancillary"
     },
@@ -153,18 +153,6 @@
         "title": "Point Density",
         "description": "Number of all returns divided by plot area",
         "unit": "points per m\u00b2",
-        "category": "ancillary"
-    },
-    "min_scan_angle": {
-        "title": "Minimum Scan Angle",
-        "description": "Minimum scan angle",
-        "unit": "degrees",
-        "category": "ancillary"
-    },
-    "max_scan_angle": {
-        "title": "Maximum Scan Angle",
-        "description": "Maximum scan angle",
-        "unit": "degrees",
         "category": "ancillary"
     },
     "scan_angle_half_width": {

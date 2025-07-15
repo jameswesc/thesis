@@ -1,0 +1,223 @@
+{
+  "metadata": {
+    ".zgroup": {
+      "zarr_format": 2
+    },
+    ".zattrs": {},
+    "all_returns/.zattrs": {
+      "long_name": "Returns per voxel",
+      "units": "Returns",
+      "_ARRAY_DIMENSIONS": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "all_returns/.zarray": {
+      "shape": [
+        358,
+        155,
+        74
+      ],
+      "chunks": [
+        90,
+        78,
+        37
+      ],
+      "fill_value": null,
+      "order": "C",
+      "filters": null,
+      "dimension_separator": ".",
+      "compressor": {
+        "id": "blosc",
+        "cname": "lz4",
+        "clevel": 5,
+        "shuffle": 1,
+        "blocksize": 0
+      },
+      "zarr_format": 2,
+      "dtype": "<u2"
+    },
+    "first_returns/.zattrs": {
+      "long_name": "First returns per voxel",
+      "units": "Returns",
+      "_ARRAY_DIMENSIONS": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "first_returns/.zarray": {
+      "shape": [
+        358,
+        155,
+        74
+      ],
+      "chunks": [
+        90,
+        78,
+        37
+      ],
+      "fill_value": null,
+      "order": "C",
+      "filters": null,
+      "dimension_separator": ".",
+      "compressor": {
+        "id": "blosc",
+        "cname": "lz4",
+        "clevel": 5,
+        "shuffle": 1,
+        "blocksize": 0
+      },
+      "zarr_format": 2,
+      "dtype": "<u2"
+    },
+    "lad_fr/.zattrs": {
+      "_ARRAY_DIMENSIONS": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "lad_fr/.zarray": {
+      "shape": [
+        358,
+        155,
+        74
+      ],
+      "chunks": [
+        90,
+        39,
+        37
+      ],
+      "fill_value": "NaN",
+      "order": "C",
+      "filters": null,
+      "dimension_separator": ".",
+      "compressor": {
+        "id": "blosc",
+        "cname": "lz4",
+        "clevel": 5,
+        "shuffle": 1,
+        "blocksize": 0
+      },
+      "zarr_format": 2,
+      "dtype": "<f8"
+    },
+    "x/.zattrs": {
+      "long_name": "Easting",
+      "units": "metres",
+      "_ARRAY_DIMENSIONS": [
+        "x"
+      ]
+    },
+    "x/.zarray": {
+      "shape": [
+        358
+      ],
+      "chunks": [
+        358
+      ],
+      "fill_value": "NaN",
+      "order": "C",
+      "filters": null,
+      "dimension_separator": ".",
+      "compressor": {
+        "id": "blosc",
+        "cname": "lz4",
+        "clevel": 5,
+        "shuffle": 1,
+        "blocksize": 0
+      },
+      "zarr_format": 2,
+      "dtype": "<f4"
+    },
+    "lad_all/.zattrs": {
+      "_ARRAY_DIMENSIONS": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "lad_all/.zarray": {
+      "shape": [
+        358,
+        155,
+        74
+      ],
+      "chunks": [
+        90,
+        39,
+        37
+      ],
+      "fill_value": "NaN",
+      "order": "C",
+      "filters": null,
+      "dimension_separator": ".",
+      "compressor": {
+        "id": "blosc",
+        "cname": "lz4",
+        "clevel": 5,
+        "shuffle": 1,
+        "blocksize": 0
+      },
+      "zarr_format": 2,
+      "dtype": "<f8"
+    },
+    "z/.zattrs": {
+      "_ARRAY_DIMENSIONS": [
+        "z"
+      ]
+    },
+    "z/.zarray": {
+      "shape": [
+        74
+      ],
+      "chunks": [
+        74
+      ],
+      "fill_value": "NaN",
+      "order": "C",
+      "filters": null,
+      "dimension_separator": ".",
+      "compressor": {
+        "id": "blosc",
+        "cname": "lz4",
+        "clevel": 5,
+        "shuffle": 1,
+        "blocksize": 0
+      },
+      "zarr_format": 2,
+      "dtype": "<f4"
+    },
+    "y/.zattrs": {
+      "long_name": "Northing",
+      "units": "metres",
+      "_ARRAY_DIMENSIONS": [
+        "y"
+      ]
+    },
+    "y/.zarray": {
+      "shape": [
+        155
+      ],
+      "chunks": [
+        155
+      ],
+      "fill_value": "NaN",
+      "order": "C",
+      "filters": null,
+      "dimension_separator": ".",
+      "compressor": {
+        "id": "blosc",
+        "cname": "lz4",
+        "clevel": 5,
+        "shuffle": 1,
+        "blocksize": 0
+      },
+      "zarr_format": 2,
+      "dtype": "<f4"
+    }
+  },
+  "zarr_consolidated_format": 1
+}

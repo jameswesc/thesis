@@ -1,0 +1,7 @@
+{
+  "long_name": "Easting",
+  "units": "metres",
+  "_ARRAY_DIMENSIONS": [
+    "x"
+  ]
+}

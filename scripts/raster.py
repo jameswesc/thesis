@@ -37,6 +37,21 @@ def chm(output_file: str, bounds: str | None = None) -> pdal.Writer:
     )
 
 
+# Standard Deviation of Height
+def sdh(output_file: str, bounds: str | None = None) -> pdal.Writer:
+    return pdal.Writer(
+        output_file,
+        type="writers.gdal",
+        resolution=1,
+        output_type="stdev",
+        bounds=bounds,
+        # Use vegetation cutoff
+        where="HeightAboveGround > 0.5",
+        dimension="HeightAboveGround",
+        data_type="float32",
+    )
+
+
 def pulse_density(output_file: str, bounds: str | None = None) -> pdal.Writer:
     return pdal.Writer(
         output_file,
@@ -81,6 +96,7 @@ def create_rasters(
     dem_output_file: str | None = None,
     dsm_output_file: str | None = None,
     chm_output_file: str | None = None,
+    sdh_output_file: str | None = None,
     pulse_density_output_file: str | None = None,
     point_density_output_file: str | None = None,
     scan_angle_output_file: str | None = None,
@@ -93,6 +109,8 @@ def create_rasters(
         pipeline |= dsm(dsm_output_file, bounds=bounds)
     if chm_output_file:
         pipeline |= chm(chm_output_file, bounds=bounds)
+    if sdh_output_file:
+        pipeline |= sdh(sdh_output_file, bounds=bounds)
     if pulse_density_output_file:
         pipeline |= pulse_density(pulse_density_output_file, bounds=bounds)
     if point_density_output_file:
