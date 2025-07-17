@@ -1,9 +1,0 @@
-{
-  "long_name": "Returns per voxel",
-  "units": "Returns",
-  "_ARRAY_DIMENSIONS": [
-    "x",
-    "y",
-    "z"
-  ]
-}
