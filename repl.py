@@ -11,6 +11,30 @@ pd  # pyright: ignore
 xr  # pyright: ignore
 pdal  # pyright: ignore
 
+# print(points_ds.to_pandas().head())
+
+# pixel_group = points_ds.groupby(
+#     X=BinGrouper(
+#         bins=x_edges,
+#         labels=x_coords,
+#     ),
+#     Y=BinGrouper(
+#         bins=y_edges,
+#         labels=y_coords,
+#     ),
+# )
+
+# voxel_group = points_ds.groupby(
+#     X=BinGrouper(bins=x_edges, labels=x_coords, include_lowest=False),
+#     Y=BinGrouper(bins=y_edges, labels=y_coords, include_lowest=False),
+#     Z=BinGrouper(bins=z_edges, labels=z_coords, include_lowest=True),
+# )
+
+# z_group = points_ds.groupby(
+#     Z=BinGrouper(bins=z_edges, labels=z_coords, include_lowest=True),
+# )
+
+
 # # %%
 # pl = (
 #     pdal.Reader("data/sites/lidar/AGG_O_01.copc.laz", type="readers.copc")
