@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 import pdal
 import xarray as xr
-from xarray.groupers import BinGrouper
 
 # %% Dummy to stuff ruff removing
 np  # pyright: ignore
@@ -11,33 +10,33 @@ pd  # pyright: ignore
 xr  # pyright: ignore
 pdal  # pyright: ignore
 
-# print(points_ds.to_pandas().head())
+# # print(points_ds.to_pandas().head())
 
-# pixel_group = points_ds.groupby(
-#     X=BinGrouper(
-#         bins=x_edges,
-#         labels=x_coords,
-#     ),
-#     Y=BinGrouper(
-#         bins=y_edges,
-#         labels=y_coords,
-#     ),
-# )
+# # pixel_group = points_ds.groupby(
+# #     X=BinGrouper(
+# #         bins=x_edges,
+# #         labels=x_coords,
+# #     ),
+# #     Y=BinGrouper(
+# #         bins=y_edges,
+# #         labels=y_coords,
+# #     ),
+# # )
 
-# voxel_group = points_ds.groupby(
-#     X=BinGrouper(bins=x_edges, labels=x_coords, include_lowest=False),
-#     Y=BinGrouper(bins=y_edges, labels=y_coords, include_lowest=False),
-#     Z=BinGrouper(bins=z_edges, labels=z_coords, include_lowest=True),
-# )
+# # voxel_group = points_ds.groupby(
+# #     X=BinGrouper(bins=x_edges, labels=x_coords, include_lowest=False),
+# #     Y=BinGrouper(bins=y_edges, labels=y_coords, include_lowest=False),
+# #     Z=BinGrouper(bins=z_edges, labels=z_coords, include_lowest=True),
+# # )
 
-# z_group = points_ds.groupby(
-#     Z=BinGrouper(bins=z_edges, labels=z_coords, include_lowest=True),
-# )
+# # z_group = points_ds.groupby(
+# #     Z=BinGrouper(bins=z_edges, labels=z_coords, include_lowest=True),
+# # )
 
 
 # # %%
 # pl = (
-#     pdal.Reader("data/sites/lidar/AGG_O_01.copc.laz", type="readers.copc")
+#     pdal.Reader("data/plots/lidar/AGG_O_01_P1.copc.laz", type="readers.copc")
 #     | pdal.Filter(type="filters.range", limits="HeightAboveGround[0:]")
 #     | pdal.Filter(type="filters.ferry", dimensions="HeightAboveGround => Z")
 # )
@@ -148,103 +147,133 @@ pdal  # pyright: ignore
 # )
 # ds
 # # %%
-# ds.to_zarr("data/sites/voxels/AGG_O_01.zarr", zarr_format=2, mode="w")
-# ds.to_netcdf("data/sites/voxels/AGG_O_01.nc")
+# # ds.to_zarr("data/sites/voxels/AGG_O_01.zarr", zarr_format=2, mode="w")
+# # ds.to_netcdf("data/sites/voxels/AGG_O_01.nc")
 # # %%
 # lad_fr = ds.lad_fr
 
 # # %%
-# figure(figsize=(12, 6), dpi=120)
 # lad_fr.sum(dim="z").T.plot().axes.set_aspect("equal")
 
 # # %%
-# figure(figsize=(12, 6), dpi=120)
-# lad_fr.sum(dim="z").T.plot().axes.set_aspect("equal")
+# lad_all.sum(dim="z").T.plot().axes.set_aspect("equal")
 
 # # %%
-# figure(figsize=(12, 6), dpi=120)
-# ds.lad_all.sum(dim="z").T.plot().axes.set_aspect("equal")
+# lai_fr = lad_fr.sum(dim="z")
+# lai_fr.T.plot().axes.set_aspect("equal")
+
+# # %%
+# lai_all = lad_all.sum(dim="z")
+# lai_all.T.plot().axes.set_aspect("equal")
+
+# # %%
+# metrics = pd.Series(
+#     {
+#         "mean_lai_all": lai_all.mean().item(),
+#         "max_lai_all": lai_all.max().item(),
+#         "mean_lai_fr": lai_fr.mean().item(),
+#         "max_lai_fr": lai_fr.max().item(),
+#     }
+# )
+# print(metrics)
+
+# # %%
+# foo = 1
 
 
+# # # %%
+# # pl = (
+# #     pdal.Reader("data/sites/lidar/AGG_O_01.copc.laz", type="readers.copc")
+# #     | pdal.Filter(type="filters.range", limits="HeightAboveGround[0:]")
+# #     | pdal.Filter(type="filters.ferry", dimensions="HeightAboveGround => Z")
+# # )
+
+# # count = pl.execute()
+# # print(f"Successfully read {count} points")
+# # # %%
+# # columns = pd.Series(["X", "Y", "Z", "ReturnNumber", "NumberOfReturns"])
+# # points = pd.DataFrame(
+# #     pl.arrays[0],
+# #     columns=columns,
+# # )
+# # points["Weight"] = 1 / points["NumberOfReturns"]
+# # points.head()
+
+# # # %% Define voxel resolution and bins
+# # dx, dy, dz = (1, 1, 1)
+
+# # x_min, x_max = (points.X.min(), points.X.max())
+# # y_min, y_max = (points.Y.min(), points.Y.max())
+# # z_min, z_max = (points.Z.min(), points.Z.max())
+
+# # x_bins = np.arange(np.floor(x_min / dx) * dx, x_max + dx, dx)
+# # y_bins = np.arange(np.floor(y_min / dy) * dy, y_max + dy, dy)
+# # z_bins = np.arange(np.floor(z_min / dz) * dz, z_max + dz, dz)
+
+# # x_coords = (x_bins[:-1] + x_bins[1:]) / 2
+# # y_coords = (y_bins[:-1] + y_bins[1:]) / 2
+# # z_coords = (z_bins[:-1] + z_bins[1:]) / 2
+# # # %%
+# # # Convert to xarray Dataset
+# # points_ds = xr.Dataset.from_dataframe(points.reset_index())
+# # points_ds
+
+# # # %%
+# # # Each group has the indices of all points in that voxel
+# # voxel_group = points_ds.groupby(
+# #     X=BinGrouper(bins=x_bins, right=False, labels=x_coords),
+# #     Y=BinGrouper(bins=y_bins, right=False, labels=y_coords),
+# #     Z=BinGrouper(bins=z_bins, right=False, labels=z_coords),
+# # )
+
+# # # %%
+# # # THIS IS A FAIR BIT SLOWER BUT GIVES YOU ACCESS TO ALL THE DATA
+# # # SIMILAR TO WHAT I IMAGINE YOU GET FOR voxel_metrics in lidR
+# # voxels = voxel_group.map(
+# #     lambda ds: xr.Dataset(
+# #         {
+# #             "all_count": ds["index"].count(),
+# #             "first_returns_count": (ds["ReturnNumber"] == 1).sum(),
+# #             "weighted_count": ds["Weight"].sum(),
+# #         }
+# #     )
+# # )
+
+
+# # # %%
+# # voxels = voxels.rename({"X_bins": "x", "Y_bins": "y", "Z_bins": "z"})
+# # voxels
+# # # %%
+# # voxels.weighted_count.sel(z=1.5).T.plot()
+
+
+# # # %%
+# # # A pixel group is the same but just on x, y
+# # pixel_group = points_ds.groupby(
+# #     x=BinGrouper(bins=x_bins),
+# #     y=BinGrouper(bins=y_bins),
+# # )
+
+# # # %%
+# # pixel_group.max().z.T.plot()
+
+
+# # # %%
+# # list(voxel_group)
+# # # %%
+# # og_ds = xr.open_dataset("data/sites/voxels/AGG_O_01.nc")
+# # og_ds
+
+voxels = xr.open_dataset("data/plots/netcdf/AGG_O_01_P1_voxels.nc")
+voxels.head()
 # %%
-pl = (
-    pdal.Reader("data/sites/lidar/AGG_O_01.copc.laz", type="readers.copc")
-    | pdal.Filter(type="filters.range", limits="HeightAboveGround[0:]")
-    | pdal.Filter(type="filters.ferry", dimensions="HeightAboveGround => Z")
-)
-
-count = pl.execute()
-print(f"Successfully read {count} points")
+voxels.all_count
 # %%
-columns = pd.Series(["X", "Y", "Z", "ReturnNumber", "NumberOfReturns"])
-points = pd.DataFrame(
-    pl.arrays[0],
-    columns=columns,
-)
-points["Weight"] = 1 / points["NumberOfReturns"]
-points.head()
-
-# %% Define voxel resolution and bins
-dx, dy, dz = (1, 1, 1)
-
-x_min, x_max = (points.X.min(), points.X.max())
-y_min, y_max = (points.Y.min(), points.Y.max())
-z_min, z_max = (points.Z.min(), points.Z.max())
-
-x_bins = np.arange(np.floor(x_min / dx) * dx, x_max + dx, dx)
-y_bins = np.arange(np.floor(y_min / dy) * dy, y_max + dy, dy)
-z_bins = np.arange(np.floor(z_min / dz) * dz, z_max + dz, dz)
-
-x_coords = (x_bins[:-1] + x_bins[1:]) / 2
-y_coords = (y_bins[:-1] + y_bins[1:]) / 2
-z_coords = (z_bins[:-1] + z_bins[1:]) / 2
+pixels = xr.open_dataset("data/plots/netcdf/AGG_O_01_P1_pixels.nc")
+pixels.head()
 # %%
-# Convert to xarray Dataset
-points_ds = xr.Dataset.from_dataframe(points.reset_index())
-points_ds
-
+voxels.lai_fr_count.T.plot()
 # %%
-# Each group has the indices of all points in that voxel
-voxel_group = points_ds.groupby(
-    X=BinGrouper(bins=x_bins, right=False, labels=x_coords),
-    Y=BinGrouper(bins=y_bins, right=False, labels=y_coords),
-    Z=BinGrouper(bins=z_bins, right=False, labels=z_coords),
-)
-
+pixels.canopy_height.T.plot().axes.set_aspect("equal")
 # %%
-# THIS IS A FAIR BIT SLOWER BUT GIVES YOU ACCESS TO ALL THE DATA
-# SIMILAR TO WHAT I IMAGINE YOU GET FOR voxel_metrics in lidR
-voxels = voxel_group.map(
-    lambda ds: xr.Dataset(
-        {
-            "all_count": ds["index"].count(),
-            "first_returns_count": (ds["ReturnNumber"] == 1).sum(),
-            "weighted_count": ds["Weight"].sum(),
-        }
-    )
-)
-
-
-# %%
-voxels = voxels.rename({"X_bins": "x", "Y_bins": "y", "Z_bins": "z"})
-voxels
-# %%
-voxels.weighted_count.sel(z=1.5).T.plot()
-
-
-# %%
-# A pixel group is the same but just on x, y
-pixel_group = points_ds.groupby(
-    x=BinGrouper(bins=x_bins),
-    y=BinGrouper(bins=y_bins),
-)
-
-# %%
-pixel_group.max().z.T.plot()
-
-
-# %%
-list(voxel_group)
-# %%
-og_ds = xr.open_dataset("data/sites/voxels/AGG_O_01.nc")
-og_ds
+pixels.sd_height.T.plot()

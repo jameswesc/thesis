@@ -3,6 +3,8 @@
 *.laz
 *.tif
 *.tif.aux.xml
+*.nc
+*.nc.aux.xml
 *.parquet
 .Rproj.user
 openrc.sh

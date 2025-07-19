@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 from pandas import DataFrame, Series
 from shapely import Polygon
 
@@ -260,6 +259,4 @@ def calculate_cloud_metrics(points: DataFrame, polygon: Polygon, veg_cutoff=0.5)
         "scan_angle_half_width": scan_angle_half_width,
     }
 
-    return pd.Series(
-        {**height_metrics, **interior_metrics, **cover_metrics, **ancillary_metrics}
-    )
+    return {**height_metrics, **interior_metrics, **cover_metrics, **ancillary_metrics}
