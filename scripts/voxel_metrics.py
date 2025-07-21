@@ -79,6 +79,8 @@ def create_voxel_dataset(points: DataFrame, voxel_size=(1.0, 1.0, 1.0), k=1):
             * (1 / k)
         )
 
+    # eLAD
+
     # use np.isfinite to remove infinities that occur when there
     # are 0 points in
     voxels["lad_all"] = lad_all.where(np.isfinite(lad_all))
@@ -86,12 +88,16 @@ def create_voxel_dataset(points: DataFrame, voxel_size=(1.0, 1.0, 1.0), k=1):
     voxels["lad_first"] = lad_first.where(np.isfinite(lad_first))
     voxels["lad_last"] = lad_last.where(np.isfinite(lad_last))
 
+    # eLAI
+
     # Calculate LAI by summing LAD across z dimension
     # min_count = 1 so columns with all na stay na and not 0
     voxels["lai_all"] = voxels["lad_all"].sum(dim="z", min_count=1)
     voxels["lai_first"] = voxels["lad_first"].sum(dim="z", min_count=1)
     voxels["lai_last"] = voxels["lad_last"].sum(dim="z", min_count=1)
     voxels["lai_weighted"] = voxels["lad_weighted"].sum(dim="z", min_count=1)
+
+    # PLAD
 
     # Calculate proportional LAD (PLAD) - LAD normalized by LAI
     with np.errstate(divide="ignore", invalid="ignore"):
@@ -119,80 +125,212 @@ voxel_metrics_metadata = {
         "title": "Mean eLAI",
         "description": "Mean effective Leaf Area Index",
         "unit": "m²/m²",
-        "category": "interior",
+        "category": "cover",
         "metric_type": "voxel",
     },
     "sd_lai": {
         "title": "Standard Deviation of eLAI",
         "description": "Standard deviation of effective Leaf Area Index",
         "unit": "m²/m²",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "horizontal",
         "metric_type": "voxel",
     },
-    # Plot-level LAD (Leaf Area Density) metrics
+    # Vertical LAD
     "mean_mean_xy_lad": {
         "title": "Mean of Mean LAD",
         "description": "Mean of the horizontal mean (x, y dimensions) of LAD. Mean of horizontal slices.",
         "unit": "m²/m³",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "vertical",
         "metric_type": "voxel",
     },
     "sd_mean_xy_lad": {
         "title": "SD of Mean LAD",
         "description": "Standard deviation of the horizontal mean (x, y dimensions) of LAD. Mean of horizontal slices.",
         "unit": "m²/m³",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "vertical",
         "metric_type": "voxel",
     },
     "cv_mean_xy_lad": {
         "title": "CV of Mean LAD",
         "description": "Coefficient of variation of the horizontal mean (x, y dimensions) of LAD. Mean of horizontal slices.",
         "unit": "ratio",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "vertical",
         "metric_type": "voxel",
     },
     "mean_cv_xy_lad": {
         "title": "Mean CV of LAD",
         "description": "Mean of the coefficient of variation of LAD along a vertical column.",
         "unit": "ratio",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "vertical",
         "metric_type": "voxel",
     },
-    # Grid-level LAD metrics
+    # Vertical PLAD
+    "mean_mean_xy_plad": {
+        "title": "Mean of Mean PLAD",
+        "description": "Mean of the horizontal mean (x, y dimensions) of LAD. Mean of horizontal slices.",
+        "unit": "m²/m³",
+        "category": "complexity",
+        "sub_category": "vertical",
+        "metric_type": "voxel",
+    },
+    "sd_mean_xy_plad": {
+        "title": "SD of Mean PLAD",
+        "description": "Standard deviation of the horizontal mean (x, y dimensions) of LAD. Mean of horizontal slices.",
+        "unit": "m²/m³",
+        "category": "complexity",
+        "sub_category": "vertical",
+        "metric_type": "voxel",
+    },
+    "cv_mean_xy_plad": {
+        "title": "CV of Mean PLAD",
+        "description": "Coefficient of variation of the horizontal mean (x, y dimensions) of LAD. Mean of horizontal slices.",
+        "unit": "ratio",
+        "category": "complexity",
+        "sub_category": "vertical",
+        "metric_type": "voxel",
+    },
+    "mean_cv_xy_plad": {
+        "title": "Mean CV of PLAD",
+        "description": "Mean of the coefficient of variation of LAD along a vertical column.",
+        "unit": "ratio",
+        "category": "complexity",
+        "sub_category": "vertical",
+        "metric_type": "voxel",
+    },
+    # Horizontal LAD
     "mean_mean_z_lad": {
         "title": "Mean of mean LAD along a vertical column",
         "description": "",
         "unit": "m²/m³",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "horizontal",
         "metric_type": "voxel",
     },
     "sd_mean_z_lad": {
         "title": "SD of Mean LAD (Vertical Profile)",
         "description": "Standard deviation of mean LAD along a vertical column",
         "unit": "m²/m³",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "horizontal",
         "metric_type": "voxel",
     },
     "cv_mean_z_lad": {
         "title": "CV of Mean LAD (Vertical Profile)",
         "description": "Coefficient of variation of mean LAD along a vertical column",
         "unit": "ratio",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "horizontal",
         "metric_type": "voxel",
     },
-    # Voxel-level LAD metrics
+    # Horizontal PLAD
+    "mean_mean_z_plad": {
+        "title": "Mean of mean PLAD along a vertical column",
+        "description": "",
+        "unit": "m²/m³",
+        "category": "complexity",
+        "sub_category": "horizontal",
+        "metric_type": "voxel",
+    },
+    "sd_mean_z_plad": {
+        "title": "SD of Mean PLAD (Vertical Profile)",
+        "description": "Standard deviation of mean LAD along a vertical column",
+        "unit": "m²/m³",
+        "category": "complexity",
+        "sub_category": "horizontal",
+        "metric_type": "voxel",
+    },
+    "cv_mean_z_plad": {
+        "title": "CV of Mean PLAD (Vertical Profile)",
+        "description": "Coefficient of variation of mean LAD along a vertical column",
+        "unit": "ratio",
+        "category": "complexity",
+        "sub_category": "horizontal",
+        "metric_type": "voxel",
+    },
+    # 3D LAD metrics
     "mean_lad": {
         "title": "Mean LAD",
         "description": "Mean Leaf Area Density across all voxels",
         "unit": "m²/m³",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "3D",
         "metric_type": "voxel",
     },
-    "shann_lad": {
+    "sd_lad": {
+        "title": "Standard Deviation of LAD",
+        "description": "Standard deviation of Leaf Area Density across all voxels",
+        "unit": "m²/m³",
+        "category": "complexity",
+        "sub_category": "3D",
+        "metric_type": "voxel",
+    },
+    "cv_lad": {
+        "title": "Coefficient of Variation of LAD",
+        "description": "Coefficient of variation of Leaf Area Density across all voxels",
+        "unit": "ratio",
+        "category": "complexity",
+        "sub_category": "3D",
+        "metric_type": "voxel",
+    },
+    "shan_lad": {
         "title": "Shannon Entropy of LAD",
-        "description": "Shannon entropy index of Leaf Area Density distribution (placeholder - not yet implemented)",
+        "description": "Shannon entropy index of LAD using 50 equal sized bins across LAD range.",
         "unit": "index",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "3D",
+        "metric_type": "voxel",
+    },
+    "shan_lad_set": {
+        "title": "Shannon Entropy of LAD",
+        "description": "Shannon entropy index of LAD using 50 equal sized bins between 0 and 4.",
+        "unit": "index",
+        "category": "complexity",
+        "sub_category": "3D",
+        "metric_type": "voxel",
+    },
+    "mean_plad": {
+        "title": "Mean PLAD",
+        "description": "Mean Leaf Area Density across all voxels",
+        "unit": "m²/m³",
+        "category": "complexity",
+        "sub_category": "3D",
+        "metric_type": "voxel",
+    },
+    "sd_plad": {
+        "title": "Standard Deviation of PLAD",
+        "description": "Standard deviation of Leaf Area Density across all voxels",
+        "unit": "m²/m³",
+        "category": "complexity",
+        "sub_category": "3D",
+        "metric_type": "voxel",
+    },
+    "cv_plad": {
+        "title": "Coefficient of Variation of PLAD",
+        "description": "Coefficient of variation of Leaf Area Density across all voxels",
+        "unit": "ratio",
+        "category": "complexity",
+        "sub_category": "3D",
+        "metric_type": "voxel",
+    },
+    "shan_plad": {
+        "title": "Shannon Entropy of PLAD",
+        "description": "Shannon entropy index of PLAD using 50 equal sized bins across LAD range.",
+        "unit": "index",
+        "category": "complexity",
+        "sub_category": "3D",
+        "metric_type": "voxel",
+    },
+    "shan_plad_set": {
+        "title": "Shannon Entropy of PLAD",
+        "description": "Shannon entropy index of PLAD using 50 equal sized bins between 0 and 1",
+        "unit": "index",
+        "category": "complexity",
+        "sub_category": "3D",
         "metric_type": "voxel",
     },
 }
@@ -202,61 +340,108 @@ voxel_metrics_metadata = {
 # Reduces that to a summary metric
 def calculate_voxel_metrics(voxels: Dataset):
     lad = voxels["lad_weighted"]
+    plad = voxels["plad_weighted"]
 
+    # Vertical LAD
     mean_xy_lad = lad.mean(dim=["x", "y"])
     mean_mean_xy_lad = mean_xy_lad.mean().item()
     sd_mean_xy_lad = mean_xy_lad.std().item()
     cv_mean_xy_lad = sd_mean_xy_lad / mean_mean_xy_lad
 
+    # Verical PLAD
+    mean_xy_plad = plad.mean(dim=["x", "y"])
+    mean_mean_xy_plad = mean_xy_plad.mean().item()
+    sd_mean_xy_plad = mean_xy_plad.std().item()
+    cv_mean_xy_plad = sd_mean_xy_plad / mean_mean_xy_plad
+
     # Your existing code with warning suppression
     with warnings.catch_warnings():
         warnings.filterwarnings("ignore", message="Degrees of freedom <= 0 for slice")
         sd_xy_lad = lad.std(dim=["x", "y"])
+        sd_xy_plad = plad.std(dim=["x", "y"])
 
     cv_xy_lad = sd_xy_lad / mean_mean_xy_lad
+    cv_xy_plad = sd_xy_plad / mean_mean_xy_plad
     mean_cv_xy_lad = cv_xy_lad.mean().item()
+    mean_cv_xy_plad = cv_xy_plad.mean().item()
 
+    # Horizontal LAD
     mean_z_lad = lad.mean(dim="z")
     mean_mean_z_lad = mean_z_lad.mean().item()
     sd_mean_z_lad = mean_z_lad.std().item()
     cv_mean_z_lad = sd_mean_z_lad / mean_mean_z_lad
 
+    # Horizontal PLAD
+    mean_z_plad = plad.mean(dim="z")
+    mean_mean_z_plad = mean_z_plad.mean().item()
+    sd_mean_z_plad = mean_z_plad.std().item()
+    cv_mean_z_plad = sd_mean_z_plad / mean_mean_z_plad
+
+    # 3D metrics LAD
+    mean_lad = lad.mean().item()
+    sd_lad = lad.std().item()
+    cv_lad = sd_lad / mean_lad
+
+    lad_bins_count = lad.groupby_bins(lad, bins=50).count()
+    lad_bins_count_total = lad_bins_count.sum().item()
+    lad_bins_proportion = lad_bins_count / lad_bins_count_total
+    shan_lad = -(lad_bins_proportion * np.log(lad_bins_proportion)).sum().item()
+
+    lad_bins_set_count = lad.groupby_bins(lad, np.linspace(0, 4, 51)).count()
+    lad_bins_set_count_total = lad_bins_set_count.sum().item()
+    lad_bins_set_proportion = lad_bins_set_count / lad_bins_set_count_total
+    shan_lad_set = (
+        -(lad_bins_set_proportion * np.log(lad_bins_set_proportion)).sum().item()
+    )
+
+    # 3D metrics PLAD
+    mean_plad = plad.mean().item()
+    sd_plad = plad.std().item()
+    cv_plad = sd_plad / mean_plad
+
+    plad_bins_count = plad.groupby_bins(plad, bins=50).count()
+    plad_bins_count_total = plad_bins_count.sum().item()
+    plad_bins_proportion = plad_bins_count / plad_bins_count_total
+    shan_plad = -(plad_bins_proportion * np.log(plad_bins_proportion)).sum().item()
+
+    plad_bins_set_count = plad.groupby_bins(plad, np.linspace(0, 1, 51)).count()
+    plad_bins_set_count_total = plad_bins_set_count.sum().item()
+    plad_bins_set_proportion = plad_bins_set_count / plad_bins_set_count_total
+    shan_plad_set = (
+        -(plad_bins_set_proportion * np.log(plad_bins_set_proportion)).sum().item()
+    )
+
     return {
-        # "n_all": voxels["all"].count().item(),
-        # "points": voxels["all"].sum().item(),
-        # "mean_count": voxels["all"].mean().item(),
-        # "max_count": voxels["all"].max().item(),
-        # "mean_first": voxels["first"].mean().item(),
-        # "max_first": voxels["first"].max().item(),
-        # FR LAI
-        # "mean_lai_first": voxels["lai_first"].mean().item(),
-        # "max_lai_first": voxels["lai_first"].max().item(),
-        # "sd_lai_first": voxels["lai_first"].std().item(),
-        # # LAST LAI
-        # "mean_lai_last": voxels["lai_last"].mean().item(),
-        # "max_lai_last": voxels["lai_last"].max().item(),
-        # "sd_lai_last": voxels["lai_last"].std().item(),
-        # ALL LAI
-        # "mean_lai_all": voxels["lai_all"].mean().item(),
-        # "max_lai_all": voxels["lai_all"].max().item(),
-        # "sd_lai_all": voxels["lai_all"].std().item(),
-        #
-        #
-        # For now all metrics are using weighted method
-        #
-        # LAI (horizontal)
+        # LAI (Cover)
         "mean_lai": voxels["lai_weighted"].mean().item(),
         "sd_lai": voxels["lai_weighted"].std().item(),
-        # Plot Level
+        # Vertical LAD
         "mean_mean_xy_lad": mean_mean_xy_lad,
         "sd_mean_xy_lad": sd_mean_xy_lad,
         "cv_mean_xy_lad": cv_mean_xy_lad,
         "mean_cv_xy_lad": mean_cv_xy_lad,
-        # Grid Level
+        # Vertical PLAD metrics
+        "mean_mean_xy_plad": mean_mean_xy_plad,
+        "sd_mean_xy_plad": sd_mean_xy_plad,
+        "cv_mean_xy_plad": cv_mean_xy_plad,
+        "mean_cv_xy_plad": mean_cv_xy_plad,
+        # Horizontal LAD
         "mean_mean_z_lad": mean_mean_z_lad,
         "sd_mean_z_lad": sd_mean_z_lad,
         "cv_mean_z_lad": cv_mean_z_lad,
-        # Voxel Levle
-        "mean_lad": voxels["lad_weighted"].mean().item(),
-        "shann_lad": -9999,
+        # Horizontal PLAD
+        "mean_mean_z_plad": mean_mean_z_plad,
+        "sd_mean_z_plad": sd_mean_z_plad,
+        "cv_mean_z_plad": cv_mean_z_plad,
+        # Voxel Level
+        "mean_lad": mean_lad,
+        "sd_lad": sd_lad,
+        "cv_lad": cv_lad,
+        "mean_plad": mean_plad,
+        "sd_plad": sd_plad,
+        "cv_plad": cv_plad,
+        "shan_lad": shan_lad,
+        "shan_lad_set": shan_lad_set,
+        "shan_plad": shan_plad,
+        "shan_plad_set": shan_plad_set,
     }

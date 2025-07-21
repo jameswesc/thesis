@@ -88,28 +88,6 @@ cloud_metrics_metadata = {
         "category": "height",
         "metric_type": "cloud",
     },
-    # Interior
-    "sd_veg_height": {
-        "title": "Standard Deviation of Vegetation Height",
-        "description": "Standard deviation of height above ground for points above (>) veg cutoff (default 0.5 m)",
-        "unit": "m",
-        "category": "interior",
-        "metric_type": "cloud",
-    },
-    "cv_veg_height": {
-        "title": "Coefficient of Variation of Vegetation Height",
-        "description": "Coefficient of variation (SD/mean) of height above ground for points above (>) veg cutoff (default 0.5 m)",
-        "unit": "ratio",
-        "category": "interior",
-        "metric_type": "cloud",
-    },
-    "gini_coeff_index_veg": {
-        "title": "Gini Coefficient of Vegetation Height",
-        "description": "Gini coefficient index measuring inequality in vegetation height distribution",
-        "unit": "index",
-        "category": "interior",
-        "metric_type": "cloud",
-    },
     # Cover
     "prop_above_2m": {
         "title": "Proportion of Points Above 2m",
@@ -123,6 +101,31 @@ cloud_metrics_metadata = {
         "description": "Proportion of all points with height above ground > veg cutoff (default 0.5 m)",
         "unit": "proportion",
         "category": "cover",
+        "metric_type": "cloud",
+    },
+    # Complexity
+    "sd_veg_height": {
+        "title": "Standard Deviation of Vegetation Height",
+        "description": "Standard deviation of height above ground for points above (>) veg cutoff (default 0.5 m)",
+        "unit": "m",
+        "category": "complexity",
+        "sub_category": "vertical",
+        "metric_type": "cloud",
+    },
+    "cv_veg_height": {
+        "title": "Coefficient of Variation of Vegetation Height",
+        "description": "Coefficient of variation (SD/mean) of height above ground for points above (>) veg cutoff (default 0.5 m)",
+        "unit": "ratio",
+        "category": "complexity",
+        "sub_category": "vertical",
+        "metric_type": "cloud",
+    },
+    "gini_coeff_index_veg": {
+        "title": "Gini Coefficient of Vegetation Height",
+        "description": "Gini coefficient index measuring inequality in vegetation height distribution",
+        "unit": "index",
+        "category": "complexity",
+        "sub_category": "vertical",
         "metric_type": "cloud",
     },
     # Ancillary

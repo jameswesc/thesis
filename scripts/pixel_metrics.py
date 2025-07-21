@@ -4,37 +4,6 @@ from pandas import DataFrame
 from xarray import Dataset
 from xarray.groupers import BinGrouper
 
-pixel_metrics_metadata = {
-    "mean_canopy_height": {
-        "title": "Mean Canopy Height",
-        "description": "Mean value of canopy height pixels. Canopy height is the maximum vegetation point in 1 m grid.",
-        "unit": "m",
-        "category": "height",
-        "metric_type": "pixel",
-    },
-    "top_rugosity": {
-        "title": "Top Rugosity",
-        "description": "Standard deviation of canopy height pixels. Canopy height is the maximum vegetation point in 1 m grid.",
-        "unit": "m",
-        "category": "exterior",
-        "metric_type": "pixel",
-    },
-    "mean_sd_veg_height": {
-        "title": "Mean of SD of Veg Height",
-        "description": "Mean value of standard deviation of vegetation point height pixels (1m grid).",
-        "unit": "m",
-        "category": "interior",
-        "metric_type": "pixel",
-    },
-    "sd_sd_veg_height": {
-        "title": "SD of SD of Veg Height",
-        "description": "Standard deviation value of standard deviation of vegetation point height pixels (1m grid).",
-        "unit": "m",
-        "category": "interior",
-        "metric_type": "pixel",
-    },
-}
-
 
 def create_pixel_dataset(points: DataFrame, veg_cutoff=0.5, pixel_size=(1.0, 1.0)):
     x_min, x_max = (points.X.min(), points.X.max())
@@ -100,6 +69,7 @@ def create_pixel_dataset(points: DataFrame, veg_cutoff=0.5, pixel_size=(1.0, 1.0
 
 
 pixel_metrics_metadata = {
+    # Height
     "mean_canopy_height": {
         "title": "Mean Canopy Height",
         "description": "Mean value of canopy height pixels. Canopy height is the maximum vegetation point in 1 m grid.",
@@ -107,32 +77,56 @@ pixel_metrics_metadata = {
         "category": "height",
         "metric_type": "pixel",
     },
+    # Cover
+    "deep_gap_fraction": {
+        "title": "Deep Gap Fraction",
+        "description": "Fraction of pixels with canopy height below the vegetation cutoff (represented as 0).",
+        "unit": "%",
+        "category": "cover",
+        "metric_type": "pixel",
+    },
+    # Complexity
+    #   - Exterior
     "top_rugosity": {
         "title": "Top Rugosity",
         "description": "Standard deviation of canopy height pixels. Canopy height is the maximum vegetation point in 1 m grid.",
         "unit": "m",
-        "category": "exterior",
+        "category": "complexity",
+        "sub_category": "exterior",
         "metric_type": "pixel",
     },
+    "rumple_index": {
+        "title": "Rumple Index",
+        "description": "TODO",
+        "unit": "fraction",
+        "category": "complexity",
+        "sub_category": "exterior",
+        "metric_type": "pixel",
+    },
+    # Complexity
+    #   - Horizontal
     "mean_sd_veg_height": {
         "title": "Mean of SD of Veg Height",
         "description": "Mean value of standard deviation of vegetation point height pixels (1m grid).",
         "unit": "m",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "horizontal",
         "metric_type": "pixel",
     },
     "sd_sd_veg_height": {
         "title": "SD of SD of Veg Height",
         "description": "Standard deviation value of standard deviation of vegetation point height pixels (1m grid).",
         "unit": "m",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "horizontal",
         "metric_type": "pixel",
     },
-    "deep_gap_fraction": {
-        "title": "Deep Gap Fraction",
-        "description": "Fraction of pixels with canopy height below the vegetation cutoff (represented as 0).",
-        "unit": "%",
-        "category": "interior",
+    "cv_sd_veg_height": {
+        "title": "CV of SD of Veg Height",
+        "description": "Coefficient of variation of standard deviation of vegetation point height pixels (1m grid).",
+        "unit": "m",
+        "category": "complexity",
+        "sub_category": "horizontal",
         "metric_type": "pixel",
     },
 }
@@ -145,10 +139,21 @@ def calculate_pixel_metrics(pixels: Dataset):
     # Gaps in the canopy are set as 0
     canopy_height = pixels["canopy_height"].where(pixels["canopy_height"] > 0)
 
+    mean_sd_veg_height = pixels["sd_height"].mean().item()
+    sd_sd_veg_height = pixels["sd_height"].std().item()
+    cv_sd_veg_height = sd_sd_veg_height / mean_sd_veg_height
+
     return {
+        # Height
         "mean_canopy_height": canopy_height.mean().item(),
-        "top_rugosity": canopy_height.std().item(),
-        "mean_sd_veg_height": pixels["sd_height"].mean().item(),
-        "sd_sd_veg_height": pixels["sd_height"].std().item(),
+        # Cover
         "deep_gap_fraction": deep_gap_fraction.item(),
+        # Complexity
+        #   - Exterior
+        "top_rugosity": canopy_height.std().item(),
+        "rumple_index": -999,
+        #   - Horizontal
+        "mean_sd_veg_height": mean_sd_veg_height,
+        "sd_sd_veg_height": sd_sd_veg_height,
+        "cv_sd_veg_height": cv_sd_veg_height,
     }

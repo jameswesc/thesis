@@ -83,27 +83,6 @@
         "category": "height",
         "metric_type": "cloud"
     },
-    "sd_veg_height": {
-        "title": "Standard Deviation of Vegetation Height",
-        "description": "Standard deviation of height above ground for points above (>) veg cutoff (default 0.5 m)",
-        "unit": "m",
-        "category": "interior",
-        "metric_type": "cloud"
-    },
-    "coeffvar_veg_height": {
-        "title": "Coefficient of Variation of Vegetation Height",
-        "description": "Coefficient of variation (SD/mean) of height above ground for points above (>) veg cutoff (default 0.5 m)",
-        "unit": "ratio",
-        "category": "interior",
-        "metric_type": "cloud"
-    },
-    "gini_coeff_index_veg": {
-        "title": "Gini Coefficient of Vegetation Height",
-        "description": "Gini coefficient index measuring inequality in vegetation height distribution",
-        "unit": "index",
-        "category": "interior",
-        "metric_type": "cloud"
-    },
     "prop_above_2m": {
         "title": "Proportion of Points Above 2m",
         "description": "Proportion of all points with height above ground > 2m",
@@ -116,6 +95,30 @@
         "description": "Proportion of all points with height above ground > veg cutoff (default 0.5 m)",
         "unit": "proportion",
         "category": "cover",
+        "metric_type": "cloud"
+    },
+    "sd_veg_height": {
+        "title": "Standard Deviation of Vegetation Height",
+        "description": "Standard deviation of height above ground for points above (>) veg cutoff (default 0.5 m)",
+        "unit": "m",
+        "category": "complexity",
+        "sub_category": "vertical",
+        "metric_type": "cloud"
+    },
+    "cv_veg_height": {
+        "title": "Coefficient of Variation of Vegetation Height",
+        "description": "Coefficient of variation (SD/mean) of height above ground for points above (>) veg cutoff (default 0.5 m)",
+        "unit": "ratio",
+        "category": "complexity",
+        "sub_category": "vertical",
+        "metric_type": "cloud"
+    },
+    "gini_coeff_index_veg": {
+        "title": "Gini Coefficient of Vegetation Height",
+        "description": "Gini coefficient index measuring inequality in vegetation height distribution",
+        "unit": "index",
+        "category": "complexity",
+        "sub_category": "vertical",
         "metric_type": "cloud"
     },
     "mean_elevation": {
@@ -160,109 +163,258 @@
         "category": "height",
         "metric_type": "pixel"
     },
+    "deep_gap_fraction": {
+        "title": "Deep Gap Fraction",
+        "description": "Fraction of pixels with canopy height below the vegetation cutoff (represented as 0).",
+        "unit": "%",
+        "category": "cover",
+        "metric_type": "pixel"
+    },
     "top_rugosity": {
         "title": "Top Rugosity",
         "description": "Standard deviation of canopy height pixels. Canopy height is the maximum vegetation point in 1 m grid.",
         "unit": "m",
-        "category": "exterior",
+        "category": "complexity",
+        "sub_category": "exterior",
+        "metric_type": "pixel"
+    },
+    "rumple_index": {
+        "title": "Rumple Index",
+        "description": "TODO",
+        "unit": "fraction",
+        "category": "complexity",
+        "sub_category": "exterior",
         "metric_type": "pixel"
     },
     "mean_sd_veg_height": {
         "title": "Mean of SD of Veg Height",
         "description": "Mean value of standard deviation of vegetation point height pixels (1m grid).",
         "unit": "m",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "horizontal",
         "metric_type": "pixel"
     },
     "sd_sd_veg_height": {
         "title": "SD of SD of Veg Height",
         "description": "Standard deviation value of standard deviation of vegetation point height pixels (1m grid).",
         "unit": "m",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "horizontal",
         "metric_type": "pixel"
     },
-    "deep_gap_fraction": {
-        "title": "Deep Gap Fraction",
-        "description": "Fraction of pixels with canopy height below the vegetation cutoff (represented as 0).",
-        "unit": "%",
-        "category": "interior",
+    "cv_sd_veg_height": {
+        "title": "CV of SD of Veg Height",
+        "description": "Coefficient of variation of standard deviation of vegetation point height pixels (1m grid).",
+        "unit": "m",
+        "category": "complexity",
+        "sub_category": "horizontal",
         "metric_type": "pixel"
     },
     "mean_lai": {
         "title": "Mean eLAI",
         "description": "Mean effective Leaf Area Index",
         "unit": "m\u00b2/m\u00b2",
-        "category": "interior",
+        "category": "cover",
         "metric_type": "voxel"
     },
     "sd_lai": {
         "title": "Standard Deviation of eLAI",
         "description": "Standard deviation of effective Leaf Area Index",
         "unit": "m\u00b2/m\u00b2",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "horizontal",
         "metric_type": "voxel"
     },
     "mean_mean_xy_lad": {
         "title": "Mean of Mean LAD",
         "description": "Mean of the horizontal mean (x, y dimensions) of LAD. Mean of horizontal slices.",
         "unit": "m\u00b2/m\u00b3",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "vertical",
         "metric_type": "voxel"
     },
     "sd_mean_xy_lad": {
         "title": "SD of Mean LAD",
         "description": "Standard deviation of the horizontal mean (x, y dimensions) of LAD. Mean of horizontal slices.",
         "unit": "m\u00b2/m\u00b3",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "vertical",
         "metric_type": "voxel"
     },
     "cv_mean_xy_lad": {
         "title": "CV of Mean LAD",
         "description": "Coefficient of variation of the horizontal mean (x, y dimensions) of LAD. Mean of horizontal slices.",
         "unit": "ratio",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "vertical",
         "metric_type": "voxel"
     },
     "mean_cv_xy_lad": {
         "title": "Mean CV of LAD",
         "description": "Mean of the coefficient of variation of LAD along a vertical column.",
         "unit": "ratio",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "vertical",
+        "metric_type": "voxel"
+    },
+    "mean_mean_xy_plad": {
+        "title": "Mean of Mean PLAD",
+        "description": "Mean of the horizontal mean (x, y dimensions) of LAD. Mean of horizontal slices.",
+        "unit": "m\u00b2/m\u00b3",
+        "category": "complexity",
+        "sub_category": "vertical",
+        "metric_type": "voxel"
+    },
+    "sd_mean_xy_plad": {
+        "title": "SD of Mean PLAD",
+        "description": "Standard deviation of the horizontal mean (x, y dimensions) of LAD. Mean of horizontal slices.",
+        "unit": "m\u00b2/m\u00b3",
+        "category": "complexity",
+        "sub_category": "vertical",
+        "metric_type": "voxel"
+    },
+    "cv_mean_xy_plad": {
+        "title": "CV of Mean PLAD",
+        "description": "Coefficient of variation of the horizontal mean (x, y dimensions) of LAD. Mean of horizontal slices.",
+        "unit": "ratio",
+        "category": "complexity",
+        "sub_category": "vertical",
+        "metric_type": "voxel"
+    },
+    "mean_cv_xy_plad": {
+        "title": "Mean CV of PLAD",
+        "description": "Mean of the coefficient of variation of LAD along a vertical column.",
+        "unit": "ratio",
+        "category": "complexity",
+        "sub_category": "vertical",
         "metric_type": "voxel"
     },
     "mean_mean_z_lad": {
         "title": "Mean of mean LAD along a vertical column",
         "description": "",
         "unit": "m\u00b2/m\u00b3",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "horizontal",
         "metric_type": "voxel"
     },
     "sd_mean_z_lad": {
         "title": "SD of Mean LAD (Vertical Profile)",
         "description": "Standard deviation of mean LAD along a vertical column",
         "unit": "m\u00b2/m\u00b3",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "horizontal",
         "metric_type": "voxel"
     },
     "cv_mean_z_lad": {
         "title": "CV of Mean LAD (Vertical Profile)",
         "description": "Coefficient of variation of mean LAD along a vertical column",
         "unit": "ratio",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "horizontal",
+        "metric_type": "voxel"
+    },
+    "mean_mean_z_plad": {
+        "title": "Mean of mean PLAD along a vertical column",
+        "description": "",
+        "unit": "m\u00b2/m\u00b3",
+        "category": "complexity",
+        "sub_category": "horizontal",
+        "metric_type": "voxel"
+    },
+    "sd_mean_z_plad": {
+        "title": "SD of Mean PLAD (Vertical Profile)",
+        "description": "Standard deviation of mean LAD along a vertical column",
+        "unit": "m\u00b2/m\u00b3",
+        "category": "complexity",
+        "sub_category": "horizontal",
+        "metric_type": "voxel"
+    },
+    "cv_mean_z_plad": {
+        "title": "CV of Mean PLAD (Vertical Profile)",
+        "description": "Coefficient of variation of mean LAD along a vertical column",
+        "unit": "ratio",
+        "category": "complexity",
+        "sub_category": "horizontal",
         "metric_type": "voxel"
     },
     "mean_lad": {
         "title": "Mean LAD",
         "description": "Mean Leaf Area Density across all voxels",
         "unit": "m\u00b2/m\u00b3",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "3D",
         "metric_type": "voxel"
     },
-    "shann_lad": {
+    "sd_lad": {
+        "title": "Standard Deviation of LAD",
+        "description": "Standard deviation of Leaf Area Density across all voxels",
+        "unit": "m\u00b2/m\u00b3",
+        "category": "complexity",
+        "sub_category": "3D",
+        "metric_type": "voxel"
+    },
+    "cv_lad": {
+        "title": "Coefficient of Variation of LAD",
+        "description": "Coefficient of variation of Leaf Area Density across all voxels",
+        "unit": "ratio",
+        "category": "complexity",
+        "sub_category": "3D",
+        "metric_type": "voxel"
+    },
+    "shan_lad": {
         "title": "Shannon Entropy of LAD",
-        "description": "Shannon entropy index of Leaf Area Density distribution (placeholder - not yet implemented)",
+        "description": "Shannon entropy index of LAD using 50 equal sized bins across LAD range.",
         "unit": "index",
-        "category": "interior",
+        "category": "complexity",
+        "sub_category": "3D",
+        "metric_type": "voxel"
+    },
+    "shan_lad_set": {
+        "title": "Shannon Entropy of LAD",
+        "description": "Shannon entropy index of LAD using 50 equal sized bins between 0 and 4.",
+        "unit": "index",
+        "category": "complexity",
+        "sub_category": "3D",
+        "metric_type": "voxel"
+    },
+    "mean_plad": {
+        "title": "Mean PLAD",
+        "description": "Mean Leaf Area Density across all voxels",
+        "unit": "m\u00b2/m\u00b3",
+        "category": "complexity",
+        "sub_category": "3D",
+        "metric_type": "voxel"
+    },
+    "sd_plad": {
+        "title": "Standard Deviation of PLAD",
+        "description": "Standard deviation of Leaf Area Density across all voxels",
+        "unit": "m\u00b2/m\u00b3",
+        "category": "complexity",
+        "sub_category": "3D",
+        "metric_type": "voxel"
+    },
+    "cv_plad": {
+        "title": "Coefficient of Variation of PLAD",
+        "description": "Coefficient of variation of Leaf Area Density across all voxels",
+        "unit": "ratio",
+        "category": "complexity",
+        "sub_category": "3D",
+        "metric_type": "voxel"
+    },
+    "shan_plad": {
+        "title": "Shannon Entropy of PLAD",
+        "description": "Shannon entropy index of PLAD using 50 equal sized bins across LAD range.",
+        "unit": "index",
+        "category": "complexity",
+        "sub_category": "3D",
+        "metric_type": "voxel"
+    },
+    "shan_plad_set": {
+        "title": "Shannon Entropy of PLAD",
+        "description": "Shannon entropy index of PLAD using 50 equal sized bins between 0 and 1",
+        "unit": "index",
+        "category": "complexity",
+        "sub_category": "3D",
         "metric_type": "voxel"
     }
 }

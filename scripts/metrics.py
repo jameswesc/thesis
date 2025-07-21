@@ -81,7 +81,7 @@ if __name__ == "__main__":
     plots = geopandas.read_file("data/plots/plots.geo.json")
 
     # Limit plots to the first n rows
-    # plots = plots.head(1)
+    # plots = plots.head(5)
 
     # Calculate metrics for each row
     metrics = plots.apply(calculate_metrics, axis=1)

@@ -321,3 +321,39 @@ sd_xy_lad = lad.std(dim=["x", "y"])
 # %%
 cv_xy_lad = sd_xy_lad / mean_xy_lad
 cv_xy_lad.mean()
+# %%
+lad = voxels["lad_weighted"]
+plad = voxels["plad_weighted"]
+# %%
+lad
+
+# %%
+lad_bins_count = lad.groupby_bins(lad, bins=50).count()
+lad_bins_count_total = lad_bins_count.sum().item()
+lad_bins_proportion = lad_bins_count / lad_bins_count_total
+shan_lad = -(lad_bins_proportion * np.log(lad_bins_proportion)).sum().item()
+shan_lad
+# %%
+lad_bins_set_count = lad.groupby_bins(lad, np.linspace(0, 4, 51)).count()
+lad_bins_set_count_total = lad_bins_set_count.sum().item()
+lad_bins_set_proportion = lad_bins_set_count / lad_bins_set_count_total
+shan_lad_set = -(lad_bins_set_proportion * np.log(lad_bins_set_proportion)).sum().item()
+shan_lad_set
+
+
+# %%
+plad_bins_count = plad.groupby_bins(plad, bins=50).count()
+plad_bins_count_total = plad_bins_count.sum().item()
+plad_bins_proportion = plad_bins_count / plad_bins_count_total
+shan_plad = -(plad_bins_proportion * np.log(plad_bins_proportion)).sum().item()
+shan_plad
+
+# %%
+plad_bins_set_count = plad.groupby_bins(plad, np.linspace(0, 1, 51)).count()
+plad_bins_set_count_total = plad_bins_set_count.sum().item()
+plad_bins_set_proportion = plad_bins_set_count / plad_bins_set_count_total
+shan_plad_set = (
+    -(plad_bins_set_proportion * np.log(plad_bins_set_proportion)).sum().item()
+)
+shan_plad_set
+# %%
