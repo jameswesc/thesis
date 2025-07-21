@@ -96,7 +96,7 @@ cloud_metrics_metadata = {
         "category": "interior",
         "metric_type": "cloud",
     },
-    "coeffvar_veg_height": {
+    "cv_veg_height": {
         "title": "Coefficient of Variation of Vegetation Height",
         "description": "Coefficient of variation (SD/mean) of height above ground for points above (>) veg cutoff (default 0.5 m)",
         "unit": "ratio",
@@ -230,7 +230,7 @@ def calculate_cloud_metrics(points: DataFrame, polygon: Polygon, veg_cutoff=0.5)
     coeffvar_veg_height = sd_veg_height / mean_veg_height
     interior_metrics = {
         "sd_veg_height": sd_veg_height,
-        "coeffvar_veg_height": coeffvar_veg_height,
+        "cv_veg_height": coeffvar_veg_height,
         "gini_coeff_index_veg": gini_coeff_index_veg,
     }
 

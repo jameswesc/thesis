@@ -1,4 +1,5 @@
 # %%
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import pdal
@@ -267,13 +268,56 @@ pdal  # pyright: ignore
 voxels = xr.open_dataset("data/plots/netcdf/AGG_O_01_P1_voxels.nc")
 voxels.head()
 # %%
-voxels.all_count
-# %%
 pixels = xr.open_dataset("data/plots/netcdf/AGG_O_01_P1_pixels.nc")
 pixels.head()
 # %%
-voxels.lai_fr_count.T.plot()
+voxels.lai_first.T.plot().axes.set_aspect("equal")
 # %%
-pixels.canopy_height.T.plot().axes.set_aspect("equal")
+voxels.lai_last.T.plot().axes.set_aspect("equal")
+
 # %%
-pixels.sd_height.T.plot()
+voxels.lai_all.T.plot().axes.set_aspect("equal")
+# %%
+voxels.lai_weighted.T.plot().axes.set_aspect("equal")
+
+# %%
+voxel_means = voxels.mean(dim=["x", "y"])
+plt.figure(figsize=(10, 6))
+z_coords = voxel_means.z
+
+plt.plot(voxel_means.plad_all, z_coords, "o-", label="LAI All")
+plt.plot(voxel_means.plad_weighted, z_coords, "s-", label="LAI Weighted")
+plt.plot(voxel_means.plad_first, z_coords, "^-", label="LAI First")
+plt.plot(voxel_means.plad_last, z_coords, "v-", label="LAI Last")
+
+plt.xlabel("PLAD")
+plt.ylabel("Height")
+plt.title("Proportional lead area density")
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()
+# voxels.plad_weighted.groupby(['z']).mean
+
+# %%
+voxels.lai_all.shape
+# %%
+voxels["lad_weighted"].mean(dim=["x", "y"]).mean().item()
+# %%
+lad = voxels["lad_weighted"]
+
+mean_xy_lad = lad.mean(dim=["x", "y"])
+mean_meanxy_lad = mean_xy_lad.mean().item()
+sd_meanxy_lad = mean_xy_lad.std().item()
+
+mean_z_lad = lad.mean(dim="z")
+sd_z_lad = lad.std(dim="z")
+cv_z_lad = sd_z_lad / mean_z_lad
+
+cv_z_lad.mean()
+# %%
+mean_xy_lad = lad.mean(dim=["x", "y"])
+sd_xy_lad = lad.std(dim=["x", "y"])
+
+# %%
+cv_xy_lad = sd_xy_lad / mean_xy_lad
+cv_xy_lad.mean()

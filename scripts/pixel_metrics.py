@@ -150,5 +150,5 @@ def calculate_pixel_metrics(pixels: Dataset):
         "top_rugosity": canopy_height.std().item(),
         "mean_sd_veg_height": pixels["sd_height"].mean().item(),
         "sd_sd_veg_height": pixels["sd_height"].std().item(),
-        "deep_gap_fraction": deep_gap_fraction,
+        "deep_gap_fraction": deep_gap_fraction.item(),
     }

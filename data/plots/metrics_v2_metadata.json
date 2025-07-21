@@ -1,0 +1,268 @@
+{
+    "mean_veg_height": {
+        "title": "Mean Vegetation Height",
+        "description": "Mean height above ground of points avove (>) veg cutoff (default 0.5 m)",
+        "unit": "m",
+        "category": "height",
+        "metric_type": "cloud"
+    },
+    "mean_veg_height_first_return": {
+        "title": "Mean Vegetation Height (First Returns)",
+        "description": "Mean height above ground of first return points above (>) veg cutoff (default 0.5 m)",
+        "unit": "m",
+        "category": "height",
+        "metric_type": "cloud"
+    },
+    "median_veg_height": {
+        "title": "Median Vegetation Height",
+        "description": "Median height above ground of points above (>) veg cutoff (default 0.5 m)",
+        "unit": "m",
+        "category": "height",
+        "metric_type": "cloud"
+    },
+    "max_veg_height": {
+        "title": "Maximum Vegetation Height",
+        "description": "Maximum height above ground of points above (>) veg cutoff (default 0.5 m)",
+        "unit": "m",
+        "category": "height",
+        "metric_type": "cloud"
+    },
+    "q99_veg_height": {
+        "title": "99th Percentile Vegetation Height",
+        "description": "99th percentile height above ground of points above (>) veg cutoff (default 0.5 m)",
+        "unit": "m",
+        "category": "height",
+        "metric_type": "cloud"
+    },
+    "q95_veg_height": {
+        "title": "95th Percentile Vegetation Height",
+        "description": "95th percentile height above ground of points above (>) veg cutoff (default 0.5 m)",
+        "unit": "m",
+        "category": "height",
+        "metric_type": "cloud"
+    },
+    "q75_veg_height": {
+        "title": "75th Percentile Vegetation Height",
+        "description": "75th percentile height above ground of points above (>) veg cutoff (default 0.5 m)",
+        "unit": "m",
+        "category": "height",
+        "metric_type": "cloud"
+    },
+    "q50_veg_height": {
+        "title": "50th Percentile Vegetation Height",
+        "description": "50th percentile (median) height above ground of points above (>) veg cutoff (default 0.5 m)",
+        "unit": "m",
+        "category": "height",
+        "metric_type": "cloud"
+    },
+    "q25_veg_height": {
+        "title": "25th Percentile Vegetation Height",
+        "description": "25th percentile height above ground of points above (>) veg cutoff (default 0.5 m)",
+        "unit": "m",
+        "category": "height",
+        "metric_type": "cloud"
+    },
+    "q5_veg_height": {
+        "title": "5th Percentile Vegetation Height",
+        "description": "5th percentile height above ground of points above (>) veg cutoff (default 0.5 m)",
+        "unit": "m",
+        "category": "height",
+        "metric_type": "cloud"
+    },
+    "q1_veg_height": {
+        "title": "1st Percentile Vegetation Height",
+        "description": "1st percentile height above ground of points above (>) veg cutoff (default 0.5 m)",
+        "unit": "m",
+        "category": "height",
+        "metric_type": "cloud"
+    },
+    "min_veg_height": {
+        "title": "Minimum Vegetation Height",
+        "description": "Minimum height above ground of points above (>) veg cutoff (default 0.5 m)",
+        "unit": "m",
+        "category": "height",
+        "metric_type": "cloud"
+    },
+    "sd_veg_height": {
+        "title": "Standard Deviation of Vegetation Height",
+        "description": "Standard deviation of height above ground for points above (>) veg cutoff (default 0.5 m)",
+        "unit": "m",
+        "category": "interior",
+        "metric_type": "cloud"
+    },
+    "coeffvar_veg_height": {
+        "title": "Coefficient of Variation of Vegetation Height",
+        "description": "Coefficient of variation (SD/mean) of height above ground for points above (>) veg cutoff (default 0.5 m)",
+        "unit": "ratio",
+        "category": "interior",
+        "metric_type": "cloud"
+    },
+    "gini_coeff_index_veg": {
+        "title": "Gini Coefficient of Vegetation Height",
+        "description": "Gini coefficient index measuring inequality in vegetation height distribution",
+        "unit": "index",
+        "category": "interior",
+        "metric_type": "cloud"
+    },
+    "prop_above_2m": {
+        "title": "Proportion of Points Above 2m",
+        "description": "Proportion of all points with height above ground > 2m",
+        "unit": "proportion",
+        "category": "cover",
+        "metric_type": "cloud"
+    },
+    "prop_veg": {
+        "title": "Proportion of Vegetation Points",
+        "description": "Proportion of all points with height above ground > veg cutoff (default 0.5 m)",
+        "unit": "proportion",
+        "category": "cover",
+        "metric_type": "cloud"
+    },
+    "mean_elevation": {
+        "title": "Mean Ground Elevation",
+        "description": "Mean altitude of ground points (Z = 0)",
+        "unit": "m",
+        "category": "ancillary",
+        "metric_type": "cloud"
+    },
+    "plot_area": {
+        "title": "Plot Area",
+        "description": "Area of the plot geometry",
+        "unit": "m\u00b2",
+        "category": "ancillary",
+        "metric_type": "cloud"
+    },
+    "pulse_density": {
+        "title": "Pulse Density",
+        "description": "Number of first returns divided by plot area",
+        "unit": "pulses per m\u00b2",
+        "category": "ancillary",
+        "metric_type": "cloud"
+    },
+    "point_density": {
+        "title": "Point Density",
+        "description": "Number of all returns divided by plot area",
+        "unit": "points per m\u00b2",
+        "category": "ancillary",
+        "metric_type": "cloud"
+    },
+    "scan_angle_half_width": {
+        "title": "Scan Angle Half Width",
+        "description": "Scan angle swath width. Calculated as max(abs(min_scan_angle), abs(max_scan_angle))",
+        "unit": "degrees",
+        "category": "ancillary",
+        "metric_type": "cloud"
+    },
+    "mean_canopy_height": {
+        "title": "Mean Canopy Height",
+        "description": "Mean value of canopy height pixels. Canopy height is the maximum vegetation point in 1 m grid.",
+        "unit": "m",
+        "category": "height",
+        "metric_type": "pixel"
+    },
+    "top_rugosity": {
+        "title": "Top Rugosity",
+        "description": "Standard deviation of canopy height pixels. Canopy height is the maximum vegetation point in 1 m grid.",
+        "unit": "m",
+        "category": "exterior",
+        "metric_type": "pixel"
+    },
+    "mean_sd_veg_height": {
+        "title": "Mean of SD of Veg Height",
+        "description": "Mean value of standard deviation of vegetation point height pixels (1m grid).",
+        "unit": "m",
+        "category": "interior",
+        "metric_type": "pixel"
+    },
+    "sd_sd_veg_height": {
+        "title": "SD of SD of Veg Height",
+        "description": "Standard deviation value of standard deviation of vegetation point height pixels (1m grid).",
+        "unit": "m",
+        "category": "interior",
+        "metric_type": "pixel"
+    },
+    "deep_gap_fraction": {
+        "title": "Deep Gap Fraction",
+        "description": "Fraction of pixels with canopy height below the vegetation cutoff (represented as 0).",
+        "unit": "%",
+        "category": "interior",
+        "metric_type": "pixel"
+    },
+    "mean_lai": {
+        "title": "Mean eLAI",
+        "description": "Mean effective Leaf Area Index",
+        "unit": "m\u00b2/m\u00b2",
+        "category": "interior",
+        "metric_type": "voxel"
+    },
+    "sd_lai": {
+        "title": "Standard Deviation of eLAI",
+        "description": "Standard deviation of effective Leaf Area Index",
+        "unit": "m\u00b2/m\u00b2",
+        "category": "interior",
+        "metric_type": "voxel"
+    },
+    "mean_mean_xy_lad": {
+        "title": "Mean of Mean LAD",
+        "description": "Mean of the horizontal mean (x, y dimensions) of LAD. Mean of horizontal slices.",
+        "unit": "m\u00b2/m\u00b3",
+        "category": "interior",
+        "metric_type": "voxel"
+    },
+    "sd_mean_xy_lad": {
+        "title": "SD of Mean LAD",
+        "description": "Standard deviation of the horizontal mean (x, y dimensions) of LAD. Mean of horizontal slices.",
+        "unit": "m\u00b2/m\u00b3",
+        "category": "interior",
+        "metric_type": "voxel"
+    },
+    "cv_mean_xy_lad": {
+        "title": "CV of Mean LAD",
+        "description": "Coefficient of variation of the horizontal mean (x, y dimensions) of LAD. Mean of horizontal slices.",
+        "unit": "ratio",
+        "category": "interior",
+        "metric_type": "voxel"
+    },
+    "mean_cv_xy_lad": {
+        "title": "Mean CV of LAD",
+        "description": "Mean of the coefficient of variation of LAD along a vertical column.",
+        "unit": "ratio",
+        "category": "interior",
+        "metric_type": "voxel"
+    },
+    "mean_mean_z_lad": {
+        "title": "Mean of mean LAD along a vertical column",
+        "description": "",
+        "unit": "m\u00b2/m\u00b3",
+        "category": "interior",
+        "metric_type": "voxel"
+    },
+    "sd_mean_z_lad": {
+        "title": "SD of Mean LAD (Vertical Profile)",
+        "description": "Standard deviation of mean LAD along a vertical column",
+        "unit": "m\u00b2/m\u00b3",
+        "category": "interior",
+        "metric_type": "voxel"
+    },
+    "cv_mean_z_lad": {
+        "title": "CV of Mean LAD (Vertical Profile)",
+        "description": "Coefficient of variation of mean LAD along a vertical column",
+        "unit": "ratio",
+        "category": "interior",
+        "metric_type": "voxel"
+    },
+    "mean_lad": {
+        "title": "Mean LAD",
+        "description": "Mean Leaf Area Density across all voxels",
+        "unit": "m\u00b2/m\u00b3",
+        "category": "interior",
+        "metric_type": "voxel"
+    },
+    "shann_lad": {
+        "title": "Shannon Entropy of LAD",
+        "description": "Shannon entropy index of Leaf Area Density distribution (placeholder - not yet implemented)",
+        "unit": "index",
+        "category": "interior",
+        "metric_type": "voxel"
+    }
+}
