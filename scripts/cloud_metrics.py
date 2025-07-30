@@ -212,6 +212,8 @@ def calculate_cloud_metrics(points: DataFrame, polygon: Polygon, veg_cutoff=0.5)
 
     # Gini Coefficient
     # Taken from https://github.com/pysal/inequality/blob/main/inequality/gini.py
+    # Based on
+    # http://www.statsdirect.com/help/default.htm#nonparametric_methods/gini.htm.
     x = np.array(veg_heights.values)
     n = len(x)
     x_sum = x.sum()
